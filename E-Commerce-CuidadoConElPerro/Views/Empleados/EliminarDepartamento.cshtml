@@ -1,0 +1,13 @@
+﻿@model E_Commerce_CuidadoConElPerro.Models.Departamento
+@{
+    ViewData["Title"] = "Eliminar Departamentos";
+}
+
+<form asp-action="EliminarDepartamento" method="post">
+    <h3 class="text-center text-danger">¿Está seguro que desea eliminar el departamento: @Model.NombreDepartamento ?</h3>
+    <input type="hidden" name="id" value="@Model.IdDepartamento" />
+    <div class="text-center">
+        <input type="submit" class="btn btn-danger" value="Eliminar Departamento" />
+        <a asp-action="VerDepartamento" class="btn btn-info">Regresar</a>
+    </div>
+</form>

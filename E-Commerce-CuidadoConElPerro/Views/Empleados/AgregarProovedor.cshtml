@@ -1,0 +1,27 @@
+﻿@model E_Commerce_CuidadoConElPerro.Models.Proovedor
+@{
+    ViewData["Title"] = "Registrar Proovedor";
+}
+
+<div class="text-center" style="margin-bottom: 20px">
+    <h1>Proovedor   </h1>
+    <img src="~/img/moda.svg" style="width: 200px; height: 200px" alt="Alternate Text" />
+</div>
+<br />
+<br />
+<form asp-action="AgregarProovedor" method="post" class="row m-lg-2" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-10">
+            <label for="validationDefault01" class="form-label">Nombre del proovedor</label>
+            <input type="text" placeholder="Martin's" class="form-control" asp-for="NombreProovedor" id="validationDefault01" value="" required>
+        </div>
+        <div class="col-md-10">
+            <label for="validationDefault02" class="form-label">Telefono</label>
+            <input type="text" placeholder="###-###-####" class="form-control" asp-for="Telefono" id="validationDefault02" value="" required>
+        </div>
+        <div class="col-md-12">
+            <br />
+            <button class="btn btn-primary" id="toastDefault" type="submit">Registrar Proovedor</button>
+        </div>
+    </div>
+</form>

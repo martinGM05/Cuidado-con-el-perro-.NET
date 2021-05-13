@@ -1,0 +1,23 @@
+﻿@model E_Commerce_CuidadoConElPerro.Models.Proovedor
+@{
+    ViewData["Title"] = "Actualizar Proovedor";
+}
+
+<h1>Ingrese los datos que quiera cambiar</h1>
+<form asp-action="ActualizarProovedor" method="post">
+    <input asp-for="IdProovedor" type="hidden" />
+    <div class="text-center m-md-5">
+        <h2>Nombre del proovedor:</h2>
+        <input asp-for="NombreProovedor" class="form-control" />
+        <span asp-validation-for="NombreProovedor" class="text-danger"></span>
+    </div>
+    <div class="text-center m-md-5">
+        <h2>Telefono del proovedor:</h2>
+        <input asp-for="Telefono" class="form-control" />
+        <span asp-validation-for="Telefono" class="text-danger"></span>
+    </div>
+    <div class="text-center">
+        <input type="submit" class="btn btn-warning" value="Actualizar" />
+        <a asp-action="VerProovedor" class="btn btn-info">Regresar a la lista</a>
+    </div>
+</form>

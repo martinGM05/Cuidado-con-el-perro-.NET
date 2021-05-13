@@ -1,0 +1,19 @@
+﻿@model E_Commerce_CuidadoConElPerro.Models.Departamento 
+@{
+    ViewData["Title"] = "Actualizar Departamento";
+}
+
+<h1>Ingrese el nombre al que quiera cambiar</h1>
+<form asp-action="ActualizarDepartamento" method="post">
+    <input asp-for="IdDepartamento" type="hidden" />
+    <div class="text-center m-md-5">
+        <label>Nombre del departamento:</label>
+        <input asp-for="NombreDepartamento" class="form-control" />
+        <span asp-validation-for="NombreDepartamento" class="text-danger"></span>
+    </div>
+    <div class="text-center">
+        <input type="submit" class="btn btn-warning" value="Actualizar" />
+        <a asp-action="VerDepartamento" class="btn btn-info">Regresar a la lista</a>
+    </div>
+</form>
+

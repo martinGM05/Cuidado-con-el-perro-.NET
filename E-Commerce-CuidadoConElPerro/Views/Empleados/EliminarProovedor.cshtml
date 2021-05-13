@@ -1,0 +1,14 @@
+﻿@model E_Commerce_CuidadoConElPerro.Models.Proovedor
+@{
+    ViewData["Title"] = "Eliminar Proovedor";
+}
+
+
+<form asp-action="EliminarProovedor" method="post">
+    <h3 class="text-center text-danger">¿Está seguro que desea eliminar el proovedor: @Model.NombreProovedor ?</h3>
+    <input type="hidden" name="id" value="@Model.IdProovedor" />
+    <div class="text-center">
+        <input type="submit" class="btn btn-danger" value="Eliminar Proovedor" />
+        <a asp-action="VerProovedor" class="btn btn-info">Regresar</a>
+    </div>
+</form>

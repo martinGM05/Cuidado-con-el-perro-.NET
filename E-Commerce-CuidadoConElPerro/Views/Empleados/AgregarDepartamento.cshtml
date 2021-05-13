@@ -1,0 +1,22 @@
+﻿@model E_Commerce_CuidadoConElPerro.Models.Departamento
+@{
+    ViewData["Title"] = "Registrar Departamento";
+}
+
+<div class="text-center" style="margin-bottom: 20px">
+    <h1>Departamento</h1>
+    <img src="~/img/guardarropa.svg" style="width: 200px; height: 200px" alt="Alternate Text" />
+</div>
+<br />
+<br />
+<form asp-action="AgregarDepartamento" method="post" class="row g-3" enctype="multipart/form-data">
+    <div class="col-md-6 ml-md-5">
+        <label for="validationDefault01" class="form-label">Nombre del departamento</label>
+        <input type="text" class="form-control" asp-for="NombreDepartamento" id="validationDefault01" value="" required>
+    </div>
+    <div class="col-md-3">
+        <br />
+        <button class="btn btn-primary" id="toastDefault" type="submit">Registrar Departamento</button>
+    </div>
+</form>
+

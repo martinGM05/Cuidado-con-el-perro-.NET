@@ -7,7 +7,10 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using E_Commerce_CuidadoConElPerro;
+using E_Commerce_CuidadoConElPerro.Models;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace E_Commerce_CuidadoConElPerro
 {
@@ -23,6 +26,10 @@ namespace E_Commerce_CuidadoConElPerro
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<CuidadoConElPerroContext>(
+                options =>
+                options.UseSqlServer(Configuration.GetConnectionString("CuidadoConElPerro"))
+                );
             services.AddControllersWithViews();
         }
 

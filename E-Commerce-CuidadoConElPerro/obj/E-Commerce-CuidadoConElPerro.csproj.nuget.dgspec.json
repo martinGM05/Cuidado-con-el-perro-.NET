@@ -44,10 +44,6 @@
               "target": "Package",
               "version": "[4.7.0, )"
             },
-            "FontAwesome.Sharp": {
-              "target": "Package",
-              "version": "[5.15.3, )"
-            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[5.0.5, )"
@@ -57,6 +53,22 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.5, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "SweetAlert": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "datatables.net": {
+              "target": "Package",
+              "version": "[1.10.24, )"
+            },
+            "toastr": {
+              "target": "Package",
+              "version": "[2.1.1, )"
             }
           },
           "imports": [
