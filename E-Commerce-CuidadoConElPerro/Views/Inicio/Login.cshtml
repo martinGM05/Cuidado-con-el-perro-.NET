@@ -1,0 +1,116 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cuidado con el perro | Inicio de sesión</title>
+    <link rel="shortcut icon" href="~/img/perro.svg">
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/login.css" />
+
+    <!-- Custom fonts for this template-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+    <link href="~/css/dropImage.css" rel="stylesheet" />
+    <!-- Custom styles for this template-->
+    <link href="~/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <form asp-action="Login" method="post">
+        <span id="Message" class="d-none">@TempData["Message"]</span>
+        <span id="Registro" class="d-none">@TempData["Registro"]</span>
+        <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+            <div class="container">
+                <div class="card login-card">
+                    <div class="row no-gutters">
+                        <div class="col-md-5">
+                            <img src="~/img/modeloLogin.jpg" alt="login" class="login-card-img">
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body">
+                                <div class="brand-wrapper">
+                                    <div class="btn-group">
+                                        <img src="~/img/perro.svg" alt="logo" class="logo">
+                                        <h1 class="titulo">Cuidado con el perro</h1>
+                                    </div>
+
+                                </div>
+                                <p class="login-card-description">Ingresa con tu cuenta</p>
+                                <div class="form-group">
+                                    <label for="email" class="sr-only">Usuario</label>
+                                    <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Nombre de usuario">
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label for="password" class="sr-only">Contraseña</label>
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="***********">
+                                </div>
+                                <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Entrar">
+                                <a href="#!" class="forgot-password-link">¿Olvidó su contraseña?</a>
+                                <p class="login-card-footer-text">¿No tiene una cuenta? <a asp-action="CrearCliente" class="text-reset">Registrese aquí</a></p>
+                                <nav class="login-card-footer-nav">
+                                    <a href="#!">Terminos de uso.</a>
+                                    <a href="#!">Privacidad y política</a>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/lib/jquery/dist/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/lib/bootstrap/dist/js/sb-admin-2.min.js"></script>
+
+    <!--CDNS Toast-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var message = $('#Message').text();
+            if (message !== '') {
+                toastr.error(message, "Error de autentificación", {
+                    "closeButton": true,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": true,
+                });
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var message = $('#Registro').text();
+            if (message !== '') {
+                toastr.success(message, "Registro Confirmado", {
+                    "closeButton": true,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": true,
+                });
+            }
+        });
+    </script>
+</body>
+</html>

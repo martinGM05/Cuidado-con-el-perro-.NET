@@ -129,7 +129,6 @@ C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro
 C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\E-Commerce-CuidadoConElPerro.TagHelpers.output.cache
 C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\E-Commerce-CuidadoConElPerro.RazorCoreGenerate.cache
 C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Empleados\AgregarPrenda.cshtml.g.cs
-C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Empleados\Index.cshtml.g.cs
 C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Empleados\Inicio.cshtml.g.cs
 C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Empleados\Privacy.cshtml.g.cs
 C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
@@ -159,3 +158,5 @@ C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro
 C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Empleados\AgregarEmpleado.cshtml.g.cs
 C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Empleados\VerEmpleado.cshtml.g.cs
 C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Empleados\ActualizarEmpleado.cshtml.g.cs
+C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Inicio\Login.cshtml.g.cs
+C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Inicio\CrearCliente.cshtml.g.cs

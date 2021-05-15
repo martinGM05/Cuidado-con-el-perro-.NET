@@ -18,9 +18,9 @@ namespace E_Commerce_CuidadoConElPerro.Models
         public string Contrasenia { get; set; }
         public byte[] Imagen { get; set; }
         public string Telefono { get; set; }
-        public int? IdDomicilio { get; set; }
+        public string Correo { get; set; }
+        public string Domicilio { get; set; }
 
-        public virtual Domicilio IdDomicilioNavigation { get; set; }
         public virtual ICollection<Carrito> Carritos { get; set; }
         public virtual ICollection<Orden> Ordens { get; set; }
     }

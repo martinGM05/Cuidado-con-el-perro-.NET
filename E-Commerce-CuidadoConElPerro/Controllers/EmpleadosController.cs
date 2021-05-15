@@ -18,11 +18,6 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             this.db = db;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         public IActionResult Inicio()
         {
             return View();

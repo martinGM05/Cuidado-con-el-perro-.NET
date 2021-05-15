@@ -20,7 +20,6 @@ namespace E_Commerce_CuidadoConElPerro.Models
         public virtual DbSet<Carrito> Carritos { get; set; }
         public virtual DbSet<Cliente> Clientes { get; set; }
         public virtual DbSet<Departamento> Departamentos { get; set; }
-        public virtual DbSet<Domicilio> Domicilios { get; set; }
         public virtual DbSet<Empleado> Empleados { get; set; }
         public virtual DbSet<MetodoPago> MetodoPagos { get; set; }
         public virtual DbSet<Orden> Ordens { get; set; }
@@ -79,7 +78,13 @@ namespace E_Commerce_CuidadoConElPerro.Models
                     .HasMaxLength(30)
                     .IsUnicode(false);
 
-                entity.Property(e => e.IdDomicilio).HasColumnName("Id_Domicilio");
+                entity.Property(e => e.Correo)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Domicilio)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Imagen).HasColumnType("image");
 
@@ -91,11 +96,6 @@ namespace E_Commerce_CuidadoConElPerro.Models
                 entity.Property(e => e.Telefono)
                     .HasMaxLength(12)
                     .IsUnicode(false);
-
-                entity.HasOne(d => d.IdDomicilioNavigation)
-                    .WithMany(p => p.Clientes)
-                    .HasForeignKey(d => d.IdDomicilio)
-                    .HasConstraintName("fk_Domicilio");
             });
 
             modelBuilder.Entity<Departamento>(entity =>
@@ -111,36 +111,6 @@ namespace E_Commerce_CuidadoConElPerro.Models
                     .HasMaxLength(20)
                     .IsUnicode(false)
                     .HasColumnName("Nombre_Departamento");
-            });
-
-            modelBuilder.Entity<Domicilio>(entity =>
-            {
-                entity.HasKey(e => e.IdDomicilio)
-                    .HasName("PK__Domicili__46E6B759CB6302CA");
-
-                entity.ToTable("Domicilio");
-
-                entity.Property(e => e.IdDomicilio).HasColumnName("Id_Domicilio");
-
-                entity.Property(e => e.Calle)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Ciudad)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.CodigoPostal)
-                    .HasMaxLength(5)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Estado)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Pais)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Empleado>(entity =>

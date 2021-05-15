@@ -3,6 +3,10 @@
     "secrets1": {
       "type": "secrets"
     },
+    "mssql2": {
+      "type": "mssql",
+      "connectionId": "CuidadoConElPerro"
+    },
     "mssql1": {
       "type": "mssql",
       "connectionId": "project1-ropa.database.windows.net,1433"
