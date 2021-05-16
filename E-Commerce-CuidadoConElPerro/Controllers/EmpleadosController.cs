@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Threading.Tasks;
 
 namespace E_Commerce_CuidadoConElPerro.Controllers
@@ -22,9 +23,10 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         {
             return View();
         }
-
+        
         public IActionResult AgregarPrenda()
         {
+            
             ViewBag.Proovedores = db.Proovedors.ToList();
             ViewBag.Tallas = db.Tallas.ToList();
             ViewBag.Departamentos = db.Departamentos.ToList();

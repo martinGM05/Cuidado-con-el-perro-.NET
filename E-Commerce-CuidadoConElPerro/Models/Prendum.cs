@@ -21,6 +21,7 @@ namespace E_Commerce_CuidadoConElPerro.Models
         public int? IdTalla { get; set; }
         public int? IdDepartamento { get; set; }
         public int? IdProovedor { get; set; }
+        public string Imagen { get; set; }
 
         public virtual Departamento IdDepartamentoNavigation { get; set; }
         public virtual Proovedor IdProovedorNavigation { get; set; }

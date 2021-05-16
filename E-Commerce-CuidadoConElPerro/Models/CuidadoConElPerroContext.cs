@@ -217,6 +217,8 @@ namespace E_Commerce_CuidadoConElPerro.Models
 
                 entity.Property(e => e.IdTalla).HasColumnName("Id_Talla");
 
+                entity.Property(e => e.Imagen).IsUnicode(false);
+
                 entity.Property(e => e.NombrePrenda)
                     .HasMaxLength(100)
                     .IsUnicode(false)

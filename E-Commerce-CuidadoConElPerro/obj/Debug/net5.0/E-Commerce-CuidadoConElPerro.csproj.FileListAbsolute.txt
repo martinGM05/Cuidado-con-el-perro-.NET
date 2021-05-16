@@ -160,3 +160,5 @@ C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro
 C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Empleados\ActualizarEmpleado.cshtml.g.cs
 C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Inicio\Login.cshtml.g.cs
 C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Inicio\CrearCliente.cshtml.g.cs
+C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Shared\_LayoutTienda.cshtml.g.cs
+C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Cliente\Tienda.cshtml.g.cs

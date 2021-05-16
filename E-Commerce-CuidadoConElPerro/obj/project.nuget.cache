@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "AHisqIzFzqph1lGfj0sKbDm5lvNRFfThl7rsBEA610/6oDTHGZ3ELZfWuEKo7VgBRDgcGIktDgnY+OoqQ3SFJg==",
+  "dgSpecHash": "8vjneYyhHVxi4w9f+CiPbJ30FhL0ikJamR+d273P8kQpklS7gmDVs5/3squkigfVO/jJaz/gCyLrh+iugJf5MQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Martin Gonzalez\\source\\repos\\ProyectoFinal\\E-Commerce-CuidadoConElPerro\\E-Commerce-CuidadoConElPerro.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Martin Gonzalez\\.nuget\\packages\\datatables.net\\1.10.24\\datatables.net.1.10.24.nupkg.sha512",
+    "C:\\Users\\Martin Gonzalez\\.nuget\\packages\\font.awesome\\5.15.3\\font.awesome.5.15.3.nupkg.sha512",
     "C:\\Users\\Martin Gonzalez\\.nuget\\packages\\fontawesome\\4.7.0\\fontawesome.4.7.0.nupkg.sha512",
     "C:\\Users\\Martin Gonzalez\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Martin Gonzalez\\.nuget\\packages\\jquery\\1.7.0\\jquery.1.7.0.nupkg.sha512",

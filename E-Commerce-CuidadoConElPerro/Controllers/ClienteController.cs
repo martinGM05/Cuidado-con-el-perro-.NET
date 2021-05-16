@@ -8,7 +8,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
 {
     public class ClienteController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Tienda()
         {
             return View();
         }

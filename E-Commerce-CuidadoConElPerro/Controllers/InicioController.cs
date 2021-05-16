@@ -53,7 +53,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
                         {
                             IsPersistent = false
                         });
-                    return RedirectToAction("Inicio", "Empleados");
+                    return RedirectToAction("Tienda", "Cliente");
                 }
                 
             }
