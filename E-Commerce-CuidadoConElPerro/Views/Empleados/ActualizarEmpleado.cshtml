@@ -32,15 +32,16 @@
         </div>
         <div class="col-md-4">
             <label for="validationDefault04" class="form-label">Rol:</label>
-            <select class="custom-select" asp-for="IdRol" id="validationDefault04" required>
-                <option selected>Escoje un rol</option>
-                @foreach (Rol item in ViewBag.Rol)
-                {
-                    <option value="@item.IdRol">@item.Usuario</option>
-                }
-            </select>
+            <select class="custom-select" asp-for="IdRol" asp-items="@ViewBag.Rol" id="validationDefault04" required></select>
         </div>
-       
+
+
+        <div class="col-md-3">
+            <label for="validationDefault06" asp-for="Imagen" class="form-label">Imagen</label>
+            <input type="file" name="foto" class="form-control-file" id="validationDefault06" />
+        </div>
+
+
         <div class="col-md-10">
             <br />
             <br />

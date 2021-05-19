@@ -1,6 +1,7 @@
 ﻿using E_Commerce_CuidadoConElPerro.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -89,6 +90,11 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             db.SaveChanges();
             TempData["Registro"] = cliente.NomCliente+ " fue registrado";
             return View("Login");
+        }
+
+        public IActionResult AutentificacionError()
+        {
+            return View();
         }
     }
 }

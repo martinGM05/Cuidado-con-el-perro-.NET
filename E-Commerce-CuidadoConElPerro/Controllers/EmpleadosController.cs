@@ -7,45 +7,66 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Hosting;
+using E_Commerce_CuidadoConElPerro.Sesiones;
+using Microsoft.AspNetCore.Authorization;
 
 namespace E_Commerce_CuidadoConElPerro.Controllers
 {
     public class EmpleadosController : Controller
     {
         private readonly CuidadoConElPerroContext db;
+        private readonly IWebHostEnvironment env;
 
-        public EmpleadosController(CuidadoConElPerroContext db)
+        public EmpleadosController(CuidadoConElPerroContext db, IWebHostEnvironment env)
         {
             this.db = db;
+            this.env = env;
         }
 
+        [Authorize]
         public IActionResult Inicio()
         {
             return View();
         }
-        
+
+        [Authorize]
         public IActionResult AgregarPrenda()
         {
             
-            ViewBag.Proovedores = db.Proovedors.ToList();
+            ViewBag.Proovedores = new SelectList(db.Proovedors, "IdProovedor", "NombreProovedor");
             ViewBag.Tallas = db.Tallas.ToList();
-            ViewBag.Departamentos = db.Departamentos.ToList();
+            ViewBag.Departamentos = new SelectList(db.Departamentos, "IdDepartamento", "NombreDepartamento");
             return View();
         }
+
+        [Authorize]
         [HttpPost]
-        public IActionResult AgregarPrenda(Prendum prenda)
+        public IActionResult AgregarPrenda(Prendum prenda, IFormFile foto)
         {
+            byte[] imagenPrenda = null;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                foto.CopyTo(ms);
+                imagenPrenda = ms.ToArray();
+            }
+            prenda.Imagen = imagenPrenda;
             db.Prenda.Add(prenda);
             db.SaveChanges();
             TempData["Message"] = prenda.NombrePrenda+" fue registrado";
             return View("Inicio");
         }
 
+        [Authorize]
         public IActionResult AgregarDepartamento()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult AgregarDepartamento(Departamento departamento)
         {
@@ -55,11 +76,13 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             return RedirectToAction("Inicio");
         }
 
+        [Authorize]
         public IActionResult AgregarProovedor()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult AgregarProovedor(Proovedor proovedor)
         {
@@ -69,16 +92,19 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             return RedirectToAction("Inicio");
         }
 
+        [Authorize]
         public IActionResult VerDepartamento()
         {
             return View(db.Departamentos.ToList());
         }
 
+        [Authorize]
         public IActionResult VerProovedor()
         {
             return View(db.Proovedors.ToList());
         }
-        
+
+        [Authorize]
         public IActionResult VerPrenda()
         {
             db.Tallas.ToList();
@@ -87,6 +113,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             return View(db.Prenda.ToList());
         }
 
+        [Authorize]
         public IActionResult ActualizarDepartamento(int ? id)
         {
             if (id == null)
@@ -99,6 +126,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             return View(departamento);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult ActualizarDepartamento(Departamento departamento)
         {
@@ -108,6 +136,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             return RedirectToAction("VerDepartamento");
         }
 
+        [Authorize]
         public IActionResult ActualizarProovedor(int ? id)
         {
             if (id == null)
@@ -120,6 +149,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             return View(proovedor);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult ActualizarProovedor(Proovedor proovedor)
         {
@@ -129,6 +159,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             return RedirectToAction("VerProovedor");
         }
 
+        [Authorize]
         public IActionResult ActualizarPrenda(int? id)
         {
             if (id == null)
@@ -138,21 +169,42 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             Prendum prenda = db.Prenda.Find(id);
             if (prenda == null)
                 return NotFound();
-            ViewBag.Proovedores = db.Proovedors.ToList();
+            Sesiones.SessionHelper.SetProductoAsJson(HttpContext.Session, "foto", prenda.Imagen);
+            ViewBag.Proovedores = new SelectList(db.Proovedors, "IdProovedor", "NombreProovedor");
             ViewBag.Tallas = db.Tallas.ToList();
-            ViewBag.Departamentos = db.Departamentos.ToList();
+            ViewBag.Departamentos = new SelectList(db.Departamentos, "IdDepartamento", "NombreDepartamento");
             return View(prenda);
         }
 
+        [Authorize]
         [HttpPost]
-        public IActionResult ActualizarPrenda(Prendum prenda)
+        public IActionResult ActualizarPrenda(Prendum prenda, IFormFile foto)
         {
-            db.Entry(prenda).State = EntityState.Modified;
-            db.SaveChanges();
-            TempData["Actualizar"] = prenda.NombrePrenda + " fue actualizad@";
-            return RedirectToAction("VerPrenda");
+            if (ModelState.IsValid)
+            {
+                if (foto == null)
+                {
+                    prenda.Imagen = SessionHelper.GetProductoFromJson<byte[]>(HttpContext.Session, "foto");
+                }
+                else
+                {
+                    byte[] imagenPrenda = null;
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        foto.CopyTo(ms);
+                        imagenPrenda = ms.ToArray();
+                    }
+                    prenda.Imagen = imagenPrenda;
+                }
+                db.Entry(prenda).State = EntityState.Modified;
+                db.SaveChanges();
+                TempData["Actualizar"] = prenda.NombrePrenda + " fue actualizad@";
+                return RedirectToAction("VerPrenda");
+            }
+            return View(prenda);
         }
 
+        [Authorize]
         public IActionResult EliminarDepartamento(int? id)
         {
             if (id == null)
@@ -165,6 +217,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             return View(departamento);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult EliminarDepartamento(int id)
         {
@@ -175,6 +228,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             return RedirectToAction("VerDepartamento");
         }
 
+        [Authorize]
         public IActionResult EliminarProovedor(int? id)
         {
             if (id == null)
@@ -187,6 +241,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             return View(proovedor);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult EliminarProovedor(int id)
         {
@@ -197,6 +252,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             return RedirectToAction("VerProovedor");
         }
 
+        [Authorize]
         public IActionResult EliminarPrenda(int? id)
         {
             Prendum prenda = db.Prenda.Find(id);
@@ -206,27 +262,38 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             return RedirectToAction("VerPrenda");
         }
 
-
+        [Authorize]
         public IActionResult AgregarEmpleado()
         {
-            ViewBag.Rol = db.Rols.ToList();
+            ViewBag.Rol = new SelectList(db.Rols, "IdRol", "Usuario");
             return View();
         }
+
+        [Authorize]
         [HttpPost]
-        public IActionResult AgregarEmpleado(Empleado empleado)
+        public IActionResult AgregarEmpleado(Empleado empleado, IFormFile foto)
         {
+            byte[] imagenEmpleado = null;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                foto.CopyTo(ms);
+                imagenEmpleado = ms.ToArray();
+            }
+            empleado.Imagen = imagenEmpleado;
             db.Empleados.Add(empleado);
             db.SaveChanges();
             TempData["Message"] = empleado.NombreEmpleado + " fue registrad@";
             return RedirectToAction("Inicio");
         }
 
+        [Authorize]
         public IActionResult VerEmpleado()
         {
             db.Rols.ToList();
             return View(db.Empleados.ToList());
         }
 
+        [Authorize]
         public IActionResult ActualizarEmpleado(int? id)
         {
             if (id == null)
@@ -236,19 +303,40 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             Empleado empleado = db.Empleados.Find(id);
             if (empleado == null)
                 return NotFound();
-            ViewBag.Rol =  db.Rols.ToList();
+            Sesiones.SessionHelper.SetProductoAsJson(HttpContext.Session, "foto", empleado.Imagen);
+            ViewBag.Rol = new SelectList(db.Rols, "IdRol", "Usuario");
             return View(empleado);
         }
 
+        [Authorize]
         [HttpPost]
-        public IActionResult ActualizarEmpleado(Empleado empleado)
+        public IActionResult ActualizarEmpleado(Empleado empleado, IFormFile foto)
         {
-            db.Entry(empleado).State = EntityState.Modified;
-            db.SaveChanges();
-            TempData["Actualizar"] = empleado.NombreEmpleado+ " fue actualizad@";
-            return RedirectToAction("VerEmpleado");
+            if (ModelState.IsValid)
+            {
+                if (foto == null)
+                {
+                    empleado.Imagen = SessionHelper.GetProductoFromJson<byte[]>(HttpContext.Session, "foto");
+                }
+                else
+                {
+                    byte[] imagenEmpleado = null;
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        foto.CopyTo(ms);
+                        imagenEmpleado = ms.ToArray();
+                    }
+                    empleado.Imagen = imagenEmpleado;
+                }
+                db.Entry(empleado).State = EntityState.Modified;
+                db.SaveChanges();
+                TempData["Actualizar"] = empleado.NombreEmpleado + " fue actualizad@";
+                return RedirectToAction("VerEmpleado");
+            }
+            return View(empleado);       
         }
 
+        [Authorize]
         public IActionResult EliminarEmpleado(int? id)
         {
             Empleado empleado = db.Empleados.Find(id);
@@ -258,9 +346,34 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             return RedirectToAction("VerEmpleado");
         }
 
-        public IActionResult Privacy()
+        [Authorize]
+        public IActionResult ObtenerFoto(int id)
         {
-            return View();
+            try
+            {
+                var prenda = db.Prenda.Find(id);
+                return File(prenda.Imagen, "image/jpeg");
+            }
+            catch (Exception)
+            {
+                var path = Path.Combine(env.WebRootPath, "img", "not-found.png");
+                return PhysicalFile(path, "image/png");
+            }
+        }
+
+        [Authorize]
+        public IActionResult ObtenerFotoEmpleado(int id)
+        {
+            try
+            {
+                var empleado = db.Empleados.Find(id);
+                return File(empleado.Imagen, "image/jpeg");
+            }
+            catch (Exception)
+            {
+                var path = Path.Combine(env.WebRootPath, "img", "not-found.png");
+                return PhysicalFile(path, "image/png");
+            }
         }
     }
 }

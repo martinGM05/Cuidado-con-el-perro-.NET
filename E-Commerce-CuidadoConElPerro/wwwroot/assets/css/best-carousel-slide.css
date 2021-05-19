@@ -9,15 +9,15 @@ div.jumbotron.carousel-hero {
 }
 
 div.jumbotron.hero-nature {
-  background-image: url('../../assets/img/architect-at-the-construction.jpg');
+    background-image: url('https://images7.alphacoders.com/447/thumb-1920-447143.jpg');
 }
 
 div.jumbotron.hero-photography {
-  background-image: url('../../assets/img/architects-and-worker.jpg');
+    background-image: url('https://images8.alphacoders.com/999/thumb-1920-999231.jpg');
 }
 
 div.jumbotron.hero-technology {
-  background-image: url('../../assets/img/young-college-students.jpg');
+    background-image: url('https://images6.alphacoders.com/605/thumb-1920-605639.jpg');
 }
 
 h1.hero-title, h2.hero-title, h3.hero-title {

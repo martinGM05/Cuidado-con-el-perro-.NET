@@ -31,13 +31,14 @@ namespace E_Commerce_CuidadoConElPerro
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                     .AddCookie(option =>
                     {
-                        option.LoginPath = new PathString("/Categorias/PageNotFound");
-                        option.AccessDeniedPath = new PathString("/Categorias/PageNotFound");
+                        option.LoginPath = new PathString("/Inicio/AutentificacionError");
+                        option.AccessDeniedPath = new PathString("/Inicio/AutentificacionError");
                     });
             services.AddDbContext<CuidadoConElPerroContext>(
                 options =>
                 options.UseSqlServer(Configuration.GetConnectionString("CuidadoConElPerro"))
                 );
+            services.AddSession(option => option.IdleTimeout = TimeSpan.FromMinutes(30));
             services.AddControllersWithViews();
         }
 
@@ -54,6 +55,7 @@ namespace E_Commerce_CuidadoConElPerro
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseSession();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

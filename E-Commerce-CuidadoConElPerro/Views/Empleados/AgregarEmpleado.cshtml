@@ -13,32 +13,35 @@
         <div class="col-md-4">
             <label for="validationDefault01" class="form-label">Nombre del empleado:</label>
             <input type="text" asp-for="NombreEmpleado" class="form-control" id="validationDefault01" required>
+            <span asp-validation-for="NombreEmpleado" class="text-danger"></span>
         </div>
         <div class="col-md-4">
             <label for="validationDefault02" class="form-label">Usuario:</label>
             <input type="text" asp-for="Usuario" class="form-control" id="validationDefault02" required>
+            <span asp-validation-for="Usuario" class="text-danger"></span>
         </div>
         <div class="col-md-4">
-            <label for="validationDefault02" class="form-label">Contraseña:</label>
+            <label for="validationDefault02" class="form-label">Contraseña (6 dígitos):</label>
             <div class="input-group">
-                <input ID="Password" type="Password" asp-for="Contrasenia" Class="form-control" required>
+                <input ID="Password" type="Password" asp-for="Contrasenia" Class="form-control" pattern="[a-zA-Z0-9]{6,6}" required>
                 <div class="input-group-append">
                     <span class="input-group-text">
                         <input ID="ShowPassword" type="checkbox" />
                     </span>
                 </div>
+                <span asp-validation-for="Contrasenia" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-4">
             <label for="validationDefault04" class="form-label">Rol:</label>
-            <select class="custom-select" asp-for="IdRol" id="validationDefault04" required>
-                <option selected>Escoje un rol</option>
-                @foreach (Rol item in ViewBag.Rol)
-                {
-                    <option value="@item.IdRol">@item.Usuario</option>
-                }
-            </select>
+            <select class="custom-select" asp-for="IdRol" asp-items="@ViewBag.Rol" id="validationDefault04" required></select>
         </div>
+
+        <div class="col-md-3">
+            <label for="validationDefault06" asp-for="Imagen" class="form-label">Imagen</label>
+            <input type="file" name="foto" class="form-control-file" id="validationDefault06" />
+        </div>
+
         <div class="col-md-10">
             <br />
             <br />
@@ -68,4 +71,6 @@
             });
         });
     </script>
+
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

@@ -34,15 +34,8 @@
         <input type="text" asp-for="Descripcion" class="form-control" id="validationDefault03" required>
     </div>
     <div class="col-md-3">
-        <label for="validationDefault05" class="form-label">Proveedor</label>
-        <select class="custom-select" asp-for="IdProovedor" id="validationDefault05" required>
-            <option selected disabled>Elije un proovedor</option>
-            @foreach (Proovedor item in ViewBag.Proovedores)
-            {
-                <option value="@item.IdProovedor">@item.NombreProovedor</option>
-            }
-
-        </select>
+        <label for="validationDefault05" class="form-label" asp-for="IdProovedor">Proveedor</label>
+        <select class="custom-select" asp-for="IdProovedor" asp-items="@ViewBag.Proovedores" id="validationDefault05" required></select>
     </div>
     <div class="col-md-2">
         <label for="validationDefault05" class="form-label">Cantidad</label>
@@ -60,27 +53,31 @@
         </select>
     </div>
 
-    <div class="col-md-5">
-        <label for="validationDefault08" class="form-label">Departamento</label>
-        <select class="custom-select" asp-for="IdDepartamento" id="validationDefault08" required>
-            <option selected disabled value="">Elija un departamento</option>
-            @foreach (Departamento item in ViewBag.Departamentos)
-            {
-                <option value="@item.IdDepartamento">@item.NombreDepartamento</option>
-            }
-        </select>
+    <div class="form-group row">
+        <div class="col-md-5">
+            <label for="validationDefault08" class="form-label" asp-for="IdDepartamento">Departamento</label>
+            <select class="custom-select" asp-for="IdDepartamento" asp-items="ViewBag.Departamentos" id="validationDefault08" required></select>
+        </div>
     </div>
 
-    @*<div class="col-md-3">
-            <label for="validationDefault06" class="form-label">Imagen</label>
-            <input type="file" asp-for="Imagen" class="form-control-file" id="validationDefault06"/>
-        </div>*@
+    <div class="form-group row ml-5">
+        <div class="col-6">
+            <label asp-for="Imagen" class="form-label">Imágen Anterior</label>
+            <br />
+            <img src="@Url.Action("ObtenerFoto", new { id = Model.IdPrenda })" width="48" />
+        </div>
+        <div class="col-6">
+            <label for="validationDefault06" asp-for="Imagen" class="form-label">Imagen</label>
+            <br />
+            <input type="file" name="foto" class="form-control-file" id="validationDefault06" />
+        </div>
+    </div>
 
-<div class="btn-group-sm">
-    <br />
-    <button class="btn btn-primary" type="submit">Actualizar Prenda</button>
-    <a asp-action="VerPrenda" class="btn btn-info">Regresar a la lista</a>
-</div>
+    <div class="form-group btn-group-sm ml-5">
+        <br />
+        <button class="btn btn-primary" type="submit">Actualizar Prenda</button>
+        <a asp-action="VerPrenda" class="btn btn-info">Regresar a la lista</a>
+    </div>
 
 
 </form>

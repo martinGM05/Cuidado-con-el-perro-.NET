@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Actualizar / Eliminar Empleados";
 }
+<link href="~/fancybox/jquery.fancybox.css" rel="stylesheet" />
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12">
@@ -19,6 +20,7 @@
                         <tr>
                             <th style="width:160px">Empleados</th>
                             <th style="width:160px">Usuario</th>
+                            <th style="width:160px">Imágen</th>
                             <th style="width:160px">Contraseña</th>
                             <th style="width:160px">Rol</th>
                             <th style="width:220px">Acciones</th>
@@ -27,16 +29,21 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                        <tr>
-                            <td>@item.NombreEmpleado</td>
-                            <td>@item.Usuario</td>
-                            <td>@item.Contrasenia</td>
-                            <td>@item.IdRolNavigation.Usuario</td>
-                            <td>
-                                <a asp-action="ActualizarEmpleado" asp-route-id="@item.IdEmpleado" class="btn btn-warning"><i class="fas fa-sync-alt"></i></a>
-                                <a asp-action="EliminarEmpleado" asp-route-id="@item.IdEmpleado" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>@item.NombreEmpleado</td>
+                                <td>@item.Usuario</td>
+                                <td>
+                                    <a class="fancybox" href="@Url.Action("ObtenerFotoEmpleado", new { id = item.IdEmpleado })">
+                                        <img src="@Url.Action("ObtenerFotoEmpleado", new { id = item.IdEmpleado })" width="48" />
+                                    </a>
+                                </td>
+                                <td>@item.Contrasenia</td>
+                                <td>@item.IdRolNavigation.Usuario</td>
+                                <td>
+                                    <a asp-action="ActualizarEmpleado" asp-route-id="@item.IdEmpleado" class="btn btn-warning"><i class="fas fa-sync-alt"></i></a>
+                                    <a asp-action="EliminarEmpleado" asp-route-id="@item.IdEmpleado" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
                         }
                     </tbody>
                 </table>
@@ -78,6 +85,19 @@
         });
     </script>
 
+    <script src="~/fancybox/jquery.fancybox.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("a.fancybox").fancybox({
+                'type': 'image',
+                'transitionIn': 'elastic',
+                'transitionOut': 'elastic',
+                'speedIn': 600,
+                'speedOut': 200,
+                'overlayShow': false
+            });
+        });
+    </script>
 
     <script>
         $(document).ready(function () {
