@@ -14,6 +14,10 @@
         <label for="validationDefault01" class="form-label">Nombre del departamento</label>
         <input type="text" class="form-control" asp-for="NombreDepartamento" id="validationDefault01" value="" required>
     </div>
+    <div class="col-md-6 ml-md-5">
+        <label for="validationDefault02" asp-for="Imagen" class="form-label">Imagen</label>
+        <input type="file" name="foto" class="form-control-file" id="validationDefault02" />
+    </div>
     <div class="col-md-3">
         <br />
         <button class="btn btn-primary" id="toastDefault" type="submit">Registrar Departamento</button>

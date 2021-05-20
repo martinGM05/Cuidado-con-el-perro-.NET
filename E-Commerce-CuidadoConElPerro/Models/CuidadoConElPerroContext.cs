@@ -30,11 +30,11 @@ namespace E_Commerce_CuidadoConElPerro.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=tcp:project1-ropa.database.windows.net,1433;Initial Catalog=CuidadoConElPerro;Persist Security Info=False;User ID=Administrador;Password=Holasoymartin05;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            }
+//            if (!optionsBuilder.IsConfigured)
+//            {
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+//                optionsBuilder.UseSqlServer("Server=tcp:project1-ropa.database.windows.net,1433;Initial Catalog=CuidadoConElPerro;Persist Security Info=False;User ID=Administrador;Password=Holasoymartin05;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+//            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -62,6 +62,7 @@ namespace E_Commerce_CuidadoConElPerro.Models
                 entity.HasOne(d => d.IdPrendaNavigation)
                     .WithMany(p => p.Carritos)
                     .HasForeignKey(d => d.IdPrenda)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("fk_Prenda");
             });
 
@@ -106,6 +107,8 @@ namespace E_Commerce_CuidadoConElPerro.Models
                 entity.ToTable("Departamento");
 
                 entity.Property(e => e.IdDepartamento).HasColumnName("Id_Departamento");
+
+                entity.Property(e => e.Imagen).HasColumnType("image");
 
                 entity.Property(e => e.NombreDepartamento)
                     .HasMaxLength(20)
@@ -229,11 +232,13 @@ namespace E_Commerce_CuidadoConElPerro.Models
                 entity.HasOne(d => d.IdDepartamentoNavigation)
                     .WithMany(p => p.Prenda)
                     .HasForeignKey(d => d.IdDepartamento)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("fk_Departamento");
 
                 entity.HasOne(d => d.IdProovedorNavigation)
                     .WithMany(p => p.Prenda)
                     .HasForeignKey(d => d.IdProovedor)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("fk_Proovedor");
 
                 entity.HasOne(d => d.IdTallaNavigation)

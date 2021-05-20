@@ -14,6 +14,7 @@ namespace E_Commerce_CuidadoConElPerro.Models
 
         public int IdDepartamento { get; set; }
         public string NombreDepartamento { get; set; }
+        public byte[] Imagen { get; set; }
 
         public virtual ICollection<Prendum> Prenda { get; set; }
     }

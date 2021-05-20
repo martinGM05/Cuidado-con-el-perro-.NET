@@ -68,8 +68,15 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult AgregarDepartamento(Departamento departamento)
+        public IActionResult AgregarDepartamento(Departamento departamento, IFormFile foto)
         {
+            byte[] imagenDepartamento = null;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                foto.CopyTo(ms);
+                imagenDepartamento = ms.ToArray();
+            }
+            departamento.Imagen = imagenDepartamento;
             db.Departamentos.Add(departamento);
             db.SaveChanges();
             TempData["Message"] = departamento.NombreDepartamento + " fue registrad@";

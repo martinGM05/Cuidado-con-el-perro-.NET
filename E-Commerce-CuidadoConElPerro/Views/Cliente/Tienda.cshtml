@@ -1,28 +1,42 @@
-﻿
+﻿@model IEnumerable<E_Commerce_CuidadoConElPerro.Models.Departamento>
 @{
     ViewData["Title"] = "Tienda";
     Layout = "~/Views/Shared/_LayoutTienda.cshtml";
 }
+<section>
+    <div class="bannerPrincipal">
+        <div class="container align-content-sm-center" style="margin-top: 310px; margin-bottom: 310px;">
+            <div class="container contenedor">
+                <h1 class="text-center">Bienvenido</h1>
+            </div>
+        </div>
+    </div>
+</section>
 <section id="carousel">
     <div class="carousel slide" data-ride="carousel" id="carousel-1">
         <div class="carousel-inner">
             <div class="carousel-item">
-                <div class="jumbotron pulse animated hero-nature carousel-hero">
-                    <h1 class="hero-title">El estilo empieza por ti.</h1>
-                    <p class="hero-subtitle">Nunca es suficiente ropa.</p>
+                <div style="height: 500px" class="jumbotron pulse animated hero-nature carousel-hero">
+                    <div style="margin-top: 100px">
+                        <h1 class="hero-title">El estilo empieza por ti.</h1>
+                        <p class="hero-subtitle">Nunca es suficiente ropa.</p>
+                    </div>
                 </div>
             </div>
             <div class="carousel-item">
-                <div class="jumbotron pulse animated hero-photography carousel-hero">
-                    <h1 class="hero-title">La elegancia radica en la sencillez</h1>
-                    <p class="hero-subtitle"></p>
+                <div style="height: 500px" class="jumbotron pulse animated hero-photography carousel-hero">
+                    <div style="margin-top: 100px">
+                        <h1 class="hero-title">La elegancia radica en la sencillez</h1>
+                        <p class="hero-subtitle"></p>
+                    </div>
                 </div>
             </div>
             <div class="carousel-item active">
-                <div class="jumbotron pulse animated hero-technology carousel-hero">
-                    <h1 class="hero-title">Ropa de moda para gente de moda</h1>
-                    <p class="hero-subtitle"><br /></p>
-                    
+                <div style="height: 500px" class="jumbotron pulse animated hero-technology carousel-hero">
+                    <div style="margin-top: 100px">
+                        <h1 class="hero-title">Ropa de moda para gente de moda</h1>
+                        <p class="hero-subtitle"><br /></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -34,332 +48,77 @@
         </ol>
     </div>
 </section>
-<section class="article-list">
+
+<section class="article-list banner1" style="height: 370px">
     <div class="container">
         <div class="intro">
-            <h2 class="text-center">Últimas novedades</h2>
-            <p class="text-center">Checa los últimos proovedores que han firmado con nosotros</p>
-        </div>
-        <div class="row articles">
-            <div class="col-sm-6 col-md-4 item">
-                <a href="#"><img class="img-fluid" src="https://i.pinimg.com/564x/a1/13/b7/a113b7fd9ac91daa7999cc2f0bd3410b.jpg"></a>
-                <h3 class="name">Levis</h3>
-                <p class="description"> empresa de capital abierto​ estadounidense productora de prendas de vestir, mundialmente conocida por la marca Levi's de pantalones vaqueros.</p><a class="action" href="#"><i class="fa fa-arrow-circle-right"></i></a>
-            </div>
-            <div class="col-sm-6 col-md-4 item">
-                <a href="#"><img class="img-fluid" src="https://www.wag1mag.com/wp-content/uploads/gucci-new-logo-WAG1MAG-53.jpg"></a>
-                <h3 class="name">Gucci</h3>
-                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p><a class="action" href="#"><i class="fa fa-arrow-circle-right"></i></a>
-            </div>
-            <div class="col-sm-6 col-md-4 item">
-                <a href="#"><img class="img-fluid" style="width: 260px;" src="https://cdn.worldvectorlogo.com/logos/louis-vuitton-4.svg"></a>
-                <h3 class="name">Louis Vuitton</h3>
-                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p><a class="action" href="#"><i class="fa fa-arrow-circle-right"></i></a>
+            <h2 class="text-center" style="color: black; font-size: 50px; font-weight: bold;">Cuidado con el perro</h2>
+            <div class="row">
+                <div class="col-6">
+                    <a class="ml-5" href="#"><img class="img" src="~/img/cuidado-con-el-perro-seeklogo.com.svg" width="180"></a>
+                </div>
+                <div class="col-6">
+                    <p class="text-center" style="color: white">Somos una nueva tienda de ropa en línea, nos basamos en conseguir ropa excluvisa y hacerla llegar a la puerta de tu casa.</p>
+                </div>
             </div>
         </div>
     </div>
 </section>
-<div class="carousel slide" data-ride="carousel" id="carousel-2">
-    <div class="carousel-inner">
+<hr style="border: 3px solid" />
+<h2 class="text-center" style="color: black; font-weight: bold; font-size: 50px"><strong>Departamentos</strong></h2>
+<hr style="border: 3px solid" />
+<div>
+    <div class="carousel-inner" style="background-color:  rgb(216 213 213 / 0.00)">
         <div class="carousel-item active">
-            <div class="container">
+            <div>
                 <div class="row product-list">
-                    <div class="col-sm-3 col-md-3 col-lg-3 product-item">
-                        <div class="product-container">
-                            <div class="row">
-                                <div class="col-md-12"><a class="product-image" style="margin-bottom:-10px;" href="#"><img class="rounded-circle" style="border:solid 6px rgb(220,219,219);" src="~/assets/img/tratamento1.png"></a></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12" style="width:252px;padding-right:0px;padding-left:0px;font-size:3px;">
-                                    <h2 class="text-nowrap text-center" style="margin-left:27px;margin-top:0px;"><a style="color:rgb(193,13,13);font-size:17px;font-family:Abel, sans-serif;margin-left:-2px;" href="#">Limpeza (Profilaxia) </a></h2>
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-3 col-md-3 col-lg-3 product-item">
+                            <div class="product-container" style="background-color: rgb(216 213 213 / 0.00)">
+                                <div class="row">
+                                    <div class="col-md-12"><a class="product-image" style="margin-bottom:-10px;"><img class="rounded-circle" style="border:solid 6px rgb(220,219,219);" src="@Url.Action("ObtenerFoto", new { id = item.IdDepartamento })"></a></div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12" style="width:252px;padding-right:0px;padding-left:0px;font-size:3px;">
+                                        <div class="text-center">
+                                            <a style="color:rgb(0 0 0);font-size:25px;font-family:Abel, sans-serif; font-weight: bold;">@item.NombreDepartamento</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-3 col-md-3 col-lg-3 product-item">
-                        <div class="product-container">
-                            <div class="row">
-                                <div class="col-md-12"><a class="product-image" style="margin-bottom:-10px;" href="#"><img class="rounded-circle" style="border:solid 6px rgb(220,219,219);" src="~/assets/img/tratamento3.png"></a></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12" style="width:252px;padding-right:0px;padding-left:0px;font-size:3px;">
-                                    <h2 class="text-nowrap text-center" style="margin-left:27px;margin-top:0px;"><a style="color:rgb(193,13,13);font-size:17px;font-family:Abel, sans-serif;margin-left:-2px;" href="#">Clareamento </a></h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-md-3 col-lg-3 product-item">
-                        <div class="product-container">
-                            <div class="row">
-                                <div class="col-md-12"><a class="product-image" style="margin-bottom:-10px;" href="#"><img class="rounded-circle" style="border:solid 6px rgb(220,219,219);" src="~/assets/img/tratamento4.png"></a></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12" style="width:252px;padding-right:0px;padding-left:0px;font-size:3px;">
-                                    <h2 class="text-nowrap text-center" style="margin-left:27px;margin-top:0px;"><a style="color:rgb(193,13,13);font-size:17px;font-family:Abel, sans-serif;margin-left:-2px;" href="#">Tratamento infantl</a></h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-md-3 col-lg-3 product-item">
-                        <div class="product-container">
-                            <div class="row">
-                                <div class="col-md-12"><a class="product-image" style="margin-bottom:-10px;" href="#"><img class="rounded-circle" style="border:solid 6px rgb(220,219,219);" src="~/assets/img/tratamento2.png"></a></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12" style="width:252px;padding-right:0px;padding-left:0px;font-size:3px;">
-                                    <h2 class="text-nowrap text-center" style="margin-left:27px;margin-top:0px;"><a style="color:rgb(193,13,13);font-size:17px;font-family:Abel, sans-serif;margin-left:-2px;" href="#">Implantes e Próteses </a></h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><img class="w-100 d-block d-none" src="http://placeholdit.imgix.net/~text?txtsize=42&amp;txt=Carousel+Image&amp;w=1400&amp;h=600" alt="Slide Image">
-        </div>
-        <div class="carousel-item">
-            <div class="container">
-                <div class="row product-list">
-                    <div class="col-sm-3 col-md-3 col-lg-3 product-item">
-                        <div class="product-container">
-                            <div class="row">
-                                <div class="col-md-12"><a class="product-image" style="margin-bottom:-10px;" href="#"><img class="rounded-circle" style="border:solid 6px rgb(220,219,219);" src="~/assets/img/tratamento1.png"></a></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12" style="width:252px;padding-right:0px;padding-left:0px;font-size:3px;">
-                                    <h2 class="text-nowrap text-center" style="margin-left:27px;margin-top:0px;"><a style="color:rgb(193,13,13);font-size:17px;font-family:Abel, sans-serif;margin-left:-2px;" href="#">Limpeza (Profilaxia) </a></h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-md-3 col-lg-3 product-item">
-                        <div class="product-container">
-                            <div class="row">
-                                <div class="col-md-12"><a class="product-image" style="margin-bottom:-10px;" href="#"><img class="rounded-circle" style="border:solid 6px rgb(220,219,219);" src="~/assets/img/tratamento3.png"></a></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12" style="width:252px;padding-right:0px;padding-left:0px;font-size:3px;">
-                                    <h2 class="text-nowrap text-center" style="margin-left:27px;margin-top:0px;"><a style="color:rgb(193,13,13);font-size:17px;font-family:Abel, sans-serif;margin-left:-2px;" href="#">Clareamento </a></h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-md-3 col-lg-3 product-item">
-                        <div class="product-container">
-                            <div class="row">
-                                <div class="col-md-12"><a class="product-image" style="margin-bottom:-10px;" href="#"><img class="rounded-circle" style="border:solid 6px rgb(220,219,219);" src="~/assets/img/tratamento4.png"></a></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12" style="width:252px;padding-right:0px;padding-left:0px;font-size:3px;">
-                                    <h2 class="text-nowrap text-center" style="margin-left:27px;margin-top:0px;"><a style="color:rgb(193,13,13);font-size:17px;font-family:Abel, sans-serif;margin-left:-2px;" href="#">Tratamento infantl</a></h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-md-3 col-lg-3 product-item">
-                        <div class="product-container">
-                            <div class="row">
-                                <div class="col-md-12"><a class="product-image" style="margin-bottom:-10px;" href="#"><img class="rounded-circle" style="border:solid 6px rgb(220,219,219);" src="~/assets/img/tratamento2.png"></a></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12" style="width:252px;padding-right:0px;padding-left:0px;font-size:3px;">
-                                    <h2 class="text-nowrap text-center" style="margin-left:27px;margin-top:0px;"><a style="color:rgb(193,13,13);font-size:17px;font-family:Abel, sans-serif;margin-left:-2px;" href="#">Implantes e Próteses </a></h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><img class="w-100 d-block d-none" src="http://placeholdit.imgix.net/~text?txtsize=42&amp;txt=Carousel+Image&amp;w=1400&amp;h=600" alt="Slide Image">
-        </div>
-    </div>
-    <div><a class="carousel-control-prev" href="#carousel-2" role="button" data-slide="prev" style="background-image:url(&quot;0&quot;);"><i class="fa fa-chevron-left"></i><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-2" role="button" data-slide="next" style="background-image:url(&quot;o&quot;);"><i class="fa fa-chevron-right"></i><span class="sr-only">Next</span></a></div>
-    <ol class="carousel-indicators">
-        <li data-target="#carousel-2" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-2" data-slide-to="1"></li>
-    </ol>
-</div>
-<section class="highlight-phone">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="intro">
-                    <h2>Highlight</h2>
-                    <p>Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae. Aliqua sed justo ligula.</p><a class="btn btn-primary" role="button" href="#">Action Button</a>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="d-none d-md-block phone-mockup">
-                    <img class="device" src="~/assets/img/phone.svg">
-                    <div class="screen"></div>
+                    }
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<div class="simple-slider">
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background: url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;) center center / cover no-repeat;"></div>
-            <div class="swiper-slide" style="background: url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;) center center / cover no-repeat;"></div>
-            <div class="swiper-slide" style="background: url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;) center center / cover no-repeat;"></div>
-        </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
     </div>
 </div>
-<div class="brands"><a href="#"> <img src="~/assets/img/instacart.png"><img src="~/assets/img/kickstarter.png"><img src="~/assets/img/lyft.png"><img src="~/assets/img/shopify.png"><img src="~/assets/img/pinterest.png"><img src="~/assets/img/twitter.png"></a></div>
-<section class="py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <article class="card-banner bg-dark">
-                    <div class="card-body" style="height: 250px;background: url(~/assets/img/banners/banner7.jpg);background-size: cover;"></div>
-                    <div class="text-bottom">
-                        <h5 class="title">Camera Drones</h5>
-                    </div>
-                </article>
-            </div>
-            <div class="col-md-4">
-                <article class="card-banner bg-dark" style="height: 250px;background: url(~/assets/img/banners/banner8.jpg);background-size: cover;">
-                    <div class="caption bottom">
-                        <h5 class="title"><strong>Watches</strong></h5>
-                        <p>No matter how far along you are in your sophistication as an amateur.</p>
-                    </div>
-                </article>
-            </div>
-            <div class="col-md-4">
-                <article class="card-banner bg-dark align-items-end" style="height: 250px;background: url(~/assets/img/banners/banner9.jpg);background-size: cover;">
-                    <div class="caption m-4 w-100">
-                        <h5 class="title"><strong>Camera &amp; Photo</strong><br></h5>
-                        <p>No matter how far along you are in your sophistication as an amateur.</p>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </div>
-</section>
+
+<hr style="border: 3px solid" />
+<h2 class="text-center" style="color: black; font-weight: bold; font-size: 50px"><strong>Novedades</strong></h2>
+<hr style="border: 3px solid" />
+
 <div class="container mt-5">
     <div class="row">
-        <div class="col-md-3  model-card">
-            <a href="#">
-                <div class="ribbon"><span>POPULAR</span></div>
-                <div class="bsblox-image-effect16">
-                    <img class="img-fluid" src="~/assets/img/modal.jpg" />
 
-                    <div class="bsblox-caption">
+        @foreach (Prendum item in ViewBag.Prendas)
+        {
+            <div class="col-md-3  model-card">
+                <a href="#">
+                    <div class="bsblox-image-effect16">
+                        <img class="img-fluid" src="@Url.Action("ObtenerFotoPrenda", new { id = item.IdPrenda })" />
 
-                        <p>VIEW<strong>PROFILE</strong></p>
+                        <div class="bsblox-caption">
+
+                            <p><strong>Comprar</strong></p>
+                        </div>
+                        <div class="bsblox-links"><a class="profile-link" href="#1"><i class="fa fa-search fa fa-search"></i></a></div>
+                        <div class="text-center model-card-title">@item.NombrePrenda</div>
                     </div>
-                    <div class="bsblox-links"><a class="profile-link" href="#1"><i class="fa fa-search fa fa-search"></i></a></div>
-                    <div class="text-center model-card-title">Model Name</div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-md-3  model-card">
-            <a href="#">
-                <div class="ribbon"><span>POPULAR</span></div>
-                <div class="bsblox-image-effect16">
-                    <img class="img-fluid" src="~/assets/img/modal.jpg" />
-
-                    <div class="bsblox-caption">
-
-                        <p>VIEW<strong>PROFILE</strong></p>
-                    </div>
-                    <div class="bsblox-links"><a class="profile-link" href="#1"><i class="fa fa-search fa fa-search"></i></a></div>
-                    <div class="text-center model-card-title">Model Name</div>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-3  model-card">
-            <a href="#">
-                <div class="ribbon"><span>POPULAR</span></div>
-                <div class="bsblox-image-effect16">
-                    <img class="img-fluid" src="~/assets/img/modal.jpg" />
-
-                    <div class="bsblox-caption">
-
-                        <p>VIEW<strong>PROFILE</strong></p>
-                    </div>
-                    <div class="bsblox-links"><a class="profile-link" href="#1"><i class="fa fa-search fa fa-search"></i></a></div>
-                    <div class="text-center model-card-title">Model Name</div>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-3  model-card">
-            <a href="#">
-                <div class="ribbon"><span>POPULAR</span></div>
-                <div class="bsblox-image-effect16">
-                    <img class="img-fluid" src="~/assets/img/modal.jpg" />
-
-                    <div class="bsblox-caption">
-
-                        <p>VIEW<strong>PROFILE</strong></p>
-                    </div>
-                    <div class="bsblox-links"><a class="profile-link" href="#1"><i class="fa fa-search fa fa-search"></i></a></div>
-                    <div class="text-center model-card-title">Model Name</div>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-3  model-card">
-            <a href="#">
-                <div class="ribbon"><span>POPULAR</span></div>
-                <div class="bsblox-image-effect16">
-                    <img class="img-fluid" src="~/assets/img/modal.jpg" />
-
-                    <div class="bsblox-caption">
-
-                        <p>VIEW<strong>PROFILE</strong></p>
-                    </div>
-                    <div class="bsblox-links"><a class="profile-link" href="#1"><i class="fa fa-search fa fa-search"></i></a></div>
-                    <div class="text-center model-card-title">Model Name</div>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-3  model-card">
-            <a href="#">
-                <div class="ribbon"><span>POPULAR</span></div>
-                <div class="bsblox-image-effect16">
-                    <img class="img-fluid" src="~/assets/img/modal.jpg" />
-
-                    <div class="bsblox-caption">
-
-                        <p>VIEW<strong>PROFILE</strong></p>
-                    </div>
-                    <div class="bsblox-links"><a class="profile-link" href="#1"><i class="fa fa-search fa fa-search"></i></a></div>
-                    <div class="text-center model-card-title">Model Name</div>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-3  model-card">
-            <a href="#">
-                <div class="ribbon"><span>POPULAR</span></div>
-                <div class="bsblox-image-effect16">
-                    <img class="img-fluid" src="~/assets/img/modal.jpg" />
-
-                    <div class="bsblox-caption">
-
-                        <p>VIEW<strong>PROFILE</strong></p>
-                    </div>
-                    <div class="bsblox-links"><a class="profile-link" href="#1"><i class="fa fa-search fa fa-search"></i></a></div>
-                    <div class="text-center model-card-title">Model Name</div>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-3  model-card">
-            <a href="#">
-                <div class="ribbon"><span>POPULAR</span></div>
-                <div class="bsblox-image-effect16">
-                    <img class="img-fluid" src="~/assets/img/modal.jpg" />
-
-                    <div class="bsblox-caption">
-
-                        <p>VIEW<strong>PROFILE</strong></p>
-                    </div>
-                    <div class="bsblox-links"><a class="profile-link" href="#1"><i class="fa fa-search fa fa-search"></i></a></div>
-                    <div class="text-center model-card-title">Model Name</div>
-                </div>
-            </a>
-        </div>
+                </a>
+            </div>
+        }
     </div>
 </div>
 <div></div>
