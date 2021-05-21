@@ -163,3 +163,7 @@ C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro
 C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\E-Commerce-CuidadoConElPerro.pdb
 C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\E-Commerce-CuidadoConElPerro.genruntimeconfig.cache
 C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\E-Commerce-CuidadoConElPerro.csprojAssemblyReference.cache
+C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Cliente\verPrendas.cshtml.g.cs
+C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Cliente\Carrito.cshtml.g.cs
+C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Carrito\AgregarCarrito.cshtml.g.cs
+C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Carrito\MostrarCarrito.cshtml.g.cs

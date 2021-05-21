@@ -1,0 +1,69 @@
+﻿@model E_Commerce_CuidadoConElPerro.Models.Prendum
+
+@{
+    ViewData["Title"] = "AgregarCarrito";
+    Layout = "~/Views/Shared/_LayoutTienda.cshtml";
+}
+<link href="~/fancybox/jquery.fancybox.css" rel="stylesheet" />
+<h1>Agregar Carrito</h1>
+
+<br />
+<h3 class="text-dark text-center" style="color: black; font-size: 50px; font-family: 'Times New Roman', Times, serif">@Model.NombrePrenda</h3>
+<form method="post" asp-action="AgregarCarrito">
+    <div class="container align-self-md-center">
+        <input type="hidden" value="@Model.IdPrenda" name="id" />
+        <div class="row justify-content-sm-center">
+            <a class="fancybox" href="@Url.Action("ObtenerFoto", new { id = Model.IdPrenda })">
+                <img src="@Url.Action("ObtenerFoto", new { id = Model.IdPrenda })" width="250" />
+            </a>
+            <div class="col-7" style="margin-left: 350px;">
+                <div class="form-group row">
+                    <div class="col-5">
+                        <label>Precio</label>
+                        <input type="text" name="Precio" readonly class="form-control"
+                               value="@Model.Precio" style="width: 300px" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-5">
+                        <label>Cantidad</label>
+                        <input type="number" min="1" max="@Model.Cantidad" name="cantidad"
+                               value="@ViewBag.Cantidad" class="form-control" style="width: 300px" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <input type="submit" class="btn btn-success" value="Registrar" />
+                    </div>
+                    <div class="col-2">
+                        <a asp-action="verPrendas" asp-controller="Cliente"
+                           class="btn btn-info">Regresar a productos</a>
+                    </div>
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+
+
+@section Scripts
+{
+
+    <script src="~/fancybox/jquery.fancybox.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+            $("a.fancybox").fancybox({
+                'type': 'image',
+                'transitionIn': 'elastic',
+                'transitionOut': 'elastic',
+                'speedIn': 600,
+                'speedOut': 200,
+                'overlayShow': false
+            });
+    </script>
+
+}

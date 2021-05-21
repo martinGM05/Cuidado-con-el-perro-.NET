@@ -27,7 +27,6 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         }
 
 
-        [Authorize]
         public IActionResult ObtenerFoto(int id)
         {
             try
@@ -43,7 +42,6 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         }
 
 
-        [Authorize]
         public IActionResult ObtenerFotoPrenda(int id)
         {
             try
@@ -57,5 +55,17 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
                 return PhysicalFile(path, "image/png");
             }
         }
+
+
+        public IActionResult verPrendas()
+        {
+            db.Tallas.ToList();
+            db.Departamentos.ToList();
+            db.Proovedors.ToList();
+            ViewBag.Prenda = db.Prenda.ToList();
+            return View();
+        }
+
+
     }
 }

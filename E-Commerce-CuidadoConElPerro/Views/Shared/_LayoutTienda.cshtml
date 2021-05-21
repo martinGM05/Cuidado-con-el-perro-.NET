@@ -47,6 +47,19 @@
     <link rel="stylesheet" href="~/assets/css/Simple-Slider.css">
     <link rel="stylesheet" href="~/assets/css/styles.css">
     <link href="~/css/goToUp.css" rel="stylesheet" />
+    <!-- CDN DataTables -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+
+    <!-- Custom fonts for this template-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+    <link href="~/css/dropImage.css" rel="stylesheet" />
+    <!-- Custom styles for this template-->
+    <link href="~/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -59,8 +72,14 @@
                 </a>
 
                 <div class="navbar-tools order-lg-1">
+
                     <div class="dropdown d-inline-block pl-1">
-                        <a class="d-block" href="#" data-toggle="dropdown">
+                        <a class="d-block" asp-controller="Carrito" asp-action="MostrarCarrito">
+                            <i style="font-size: 25px; margin-right: 15px; " class="fas fa-cart-plus"></i>
+                        </a>
+                    </div>
+                    <div class="dropdown d-inline-block pl-1">
+                        <a class="d-block" data-toggle="dropdown">
                             <img class="user-photo" src="https://sajadv.s3-sa-east-1.amazonaws.com/1/foto-pessoa-perfil/-783009143_1471629786795_1_1.png?pfdrid_c=true">
                         </a>
                         <div class="dropdown-menu user">
@@ -84,9 +103,7 @@
                 <div class="navbar-collapse collapse order-lg-0" id="navbar">
                     <ul class="navbar-nav mr-2">
                         <li class="nav-item">
-                            <a class="nav-link nav-link-home" href="#">
-                                <img class="icon-home" src="~/img/prenda.svg" style="width: 30px; height: 30px;" alt="Todos">
-                            </a>
+                            <a class="nav-link nav-link-home" asp-action="verPrendas">Toda la ropa</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link" href="#" data-toggle="dropdown">Mujeres</a>
@@ -203,6 +220,43 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
     <script src="~/assets/js/Simple-Slider.js"></script>
     <script src="~/js/popup.js"></script>
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/lib/jquery/dist/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/lib/bootstrap/dist/js/sb-admin-2.min.js"></script>
+
+    <!--CDNS Toast-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <!-- Cdns DataTables -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
+    </script>
+    <!-- DATATABLES -->
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
+    </script>
+    <!-- BOOTSTRAP -->
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
+    </script>
+
+    <script src="~/js/dragImage.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="~/js/Chart.min.js"></script>
+
+
+    <!-- Page level custom scripts -->
+    <script src="~/js/chart-area-demo.js"></script>
+    <script src="~/js/chart-pie-demo.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 
 
 

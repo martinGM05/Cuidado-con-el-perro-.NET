@@ -7,11 +7,6 @@ namespace E_Commerce_CuidadoConElPerro.Models
 {
     public partial class Prendum
     {
-        public Prendum()
-        {
-            Carritos = new HashSet<Carrito>();
-        }
-
         public int IdPrenda { get; set; }
         public string NombrePrenda { get; set; }
         public string Genero { get; set; }
@@ -26,6 +21,5 @@ namespace E_Commerce_CuidadoConElPerro.Models
         public virtual Departamento IdDepartamentoNavigation { get; set; }
         public virtual Proovedor IdProovedorNavigation { get; set; }
         public virtual Talla IdTallaNavigation { get; set; }
-        public virtual ICollection<Carrito> Carritos { get; set; }
     }
 }

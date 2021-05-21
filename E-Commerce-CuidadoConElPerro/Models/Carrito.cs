@@ -1,24 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-
-#nullable disable
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace E_Commerce_CuidadoConElPerro.Models
 {
-    public partial class Carrito
+    public class Carrito
     {
-        public Carrito()
-        {
-            Ordens = new HashSet<Orden>();
-        }
+        public int Cantidad { get; set; }
+        public Prendum Prenda { get; set; }
 
-        public int IdCarrito { get; set; }
-        public int? IdCliente { get; set; }
-        public int? IdPrenda { get; set; }
-        public int? Cantidad { get; set; }
-
-        public virtual Cliente IdClienteNavigation { get; set; }
-        public virtual Prendum IdPrendaNavigation { get; set; }
-        public virtual ICollection<Orden> Ordens { get; set; }
     }
 }

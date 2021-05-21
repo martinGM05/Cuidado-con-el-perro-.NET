@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewData["Title"] = "verPrendas";
+    Layout = "~/Views/Shared/_LayoutTienda.cshtml";
+
+
+}
+
+<link href="~/fancybox/jquery.fancybox.css" rel="stylesheet" />
+<link href="~/css/estiloVerPrendas.css" rel="stylesheet" />
+<div class="container-fluid">
+    <div style="margin-top: 95px;">
+        <div class="text-center">
+
+            <h1 class="page-header text-center">
+                Echale un vistazo a nuestra ropa
+            </h1>
+            <span id="Eliminar" class="d-none">@TempData["Eliminado"]</span>
+            <span id="Actualizar" class="d-none">@TempData["Actualizar"]</span>
+            <p class="text-center">
+                En este apartado podremos ver toda la <b>ropa</b> de la tienda.
+            </p>
+
+            <div class="col-1 mb-3">
+                <div class="btn-group">
+                    <a class="btn btn-warning" style="color: black;" asp-action="Tienda"><i class="fas fa-undo-alt"></i> Regresar</a>
+                </div>
+                   </div>
+
+        </div>
+            <div class="row container">
+                <div class="card-deck">
+                    @foreach (Prendum item in ViewBag.Prenda)
+                     {
+                        <div class="card">
+                            <div class="box">
+                                <div class="slide-img">
+                                    <a class="fancybox" href="@Url.Action("ObtenerFotoPrenda", new { id = item.IdPrenda })" style="width: 250px; color: black; font-weight: bold;">
+                                        <img src="@Url.Action("ObtenerFotoPrenda", new { id = item.IdPrenda })" class="card-img-top" style="width: 250px" />
+                                    </a>
+                                </div>
+                                <div class="detail-box">
+                                    <div class="type">
+                                        <a>@item.NombrePrenda</a>
+                                        <span>@item.Descripcion</span>
+                                    </div>
+                                    <a class="price">$@item.Precio</a>
+                                </div>
+                                <a class="btn btn-outline-danger" asp-action="AgregarCarrito" asp-controller="Carrito" asp-route-id="@item.IdPrenda">Agregar a carrito</a>
+                            </div>
+                        </div>
+                     }
+                </div>
+            </div>
+    </div>
+</div>
+
+
+
+@section Scripts
+{
+
+    <script src="~/fancybox/jquery.fancybox.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("a.fancybox").fancybox({
+                'type': 'image',
+                'transitionIn': 'elastic',
+                'transitionOut': 'elastic',
+                'speedIn': 600,
+                'speedOut': 200,
+                'overlayShow': false
+            });
+
+            $('#example').DataTable({
+                language: {
+                    processing: "En proceso",
+                    search: "Buscar",
+                    lengthMenu: "Agrupar de _MENU_ ítems",
+                    info: "Mostrando del ítem  _START_ al _END_ de un total de _TOTAL_ ítems",
+                    infoEmpty: "No existen datos",
+                    infoFiltered: "(Filtrado de _MAX_ elementos en total)",
+                    infoPostFix: "",
+                    loadingRecords: "Cargando...",
+                    zeroRecords: "No se encontraron datos con tu busqueda",
+                    emptyTable: "No hay datos disponibles en la tabla",
+                    paginate: {
+                        first: "Primero",
+                        previous: "Anterior",
+                        next: "Siguiente",
+                        last: "Ultimo"
+                    },
+                    aria: {
+                        sortAscending: ": Ascendente",
+                        sortDescending: ": Descendente"
+                    }
+                },
+                scrollY: 400,
+                lengthMenu: [[10, 25, -1], [10, 25, "All"]],
+            });
+        });
+    </script>
+}

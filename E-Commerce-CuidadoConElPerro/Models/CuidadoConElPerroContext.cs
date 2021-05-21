@@ -17,12 +17,10 @@ namespace E_Commerce_CuidadoConElPerro.Models
         {
         }
 
-        public virtual DbSet<Carrito> Carritos { get; set; }
         public virtual DbSet<Cliente> Clientes { get; set; }
         public virtual DbSet<Departamento> Departamentos { get; set; }
         public virtual DbSet<Empleado> Empleados { get; set; }
         public virtual DbSet<MetodoPago> MetodoPagos { get; set; }
-        public virtual DbSet<Orden> Ordens { get; set; }
         public virtual DbSet<Prendum> Prenda { get; set; }
         public virtual DbSet<Proovedor> Proovedors { get; set; }
         public virtual DbSet<Rol> Rols { get; set; }
@@ -30,41 +28,16 @@ namespace E_Commerce_CuidadoConElPerro.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-//            if (!optionsBuilder.IsConfigured)
-//            {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-//                optionsBuilder.UseSqlServer("Server=tcp:project1-ropa.database.windows.net,1433;Initial Catalog=CuidadoConElPerro;Persist Security Info=False;User ID=Administrador;Password=Holasoymartin05;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-//            }
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Server=tcp:project1-ropa.database.windows.net,1433;Initial Catalog=CuidadoConElPerro;Persist Security Info=False;User ID=Administrador;Password=Holasoymartin05;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
-
-            modelBuilder.Entity<Carrito>(entity =>
-            {
-                entity.HasKey(e => e.IdCarrito)
-                    .HasName("PK__Carrito__554B26FD20FBB382");
-
-                entity.ToTable("Carrito");
-
-                entity.Property(e => e.IdCarrito).HasColumnName("Id_Carrito");
-
-                entity.Property(e => e.IdCliente).HasColumnName("Id_Cliente");
-
-                entity.Property(e => e.IdPrenda).HasColumnName("Id_Prenda");
-
-                entity.HasOne(d => d.IdClienteNavigation)
-                    .WithMany(p => p.Carritos)
-                    .HasForeignKey(d => d.IdCliente)
-                    .HasConstraintName("fk_Cliente");
-
-                entity.HasOne(d => d.IdPrendaNavigation)
-                    .WithMany(p => p.Carritos)
-                    .HasForeignKey(d => d.IdPrenda)
-                    .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("fk_Prenda");
-            });
 
             modelBuilder.Entity<Cliente>(entity =>
             {
@@ -160,43 +133,6 @@ namespace E_Commerce_CuidadoConElPerro.Models
                 entity.Property(e => e.Nombre)
                     .HasMaxLength(20)
                     .IsUnicode(false);
-            });
-
-            modelBuilder.Entity<Orden>(entity =>
-            {
-                entity.HasKey(e => e.IdOrden)
-                    .HasName("PK__Orden__370733B6C18B04FA");
-
-                entity.ToTable("Orden");
-
-                entity.Property(e => e.IdOrden).HasColumnName("Id_Orden");
-
-                entity.Property(e => e.FechaHora)
-                    .HasColumnType("datetime")
-                    .HasColumnName("Fecha_Hora");
-
-                entity.Property(e => e.IdCarrito).HasColumnName("Id_Carrito");
-
-                entity.Property(e => e.IdCliente).HasColumnName("Id_Cliente");
-
-                entity.Property(e => e.IdMetodoPago).HasColumnName("Id_MetodoPago");
-
-                entity.Property(e => e.Total).HasColumnType("money");
-
-                entity.HasOne(d => d.IdCarritoNavigation)
-                    .WithMany(p => p.Ordens)
-                    .HasForeignKey(d => d.IdCarrito)
-                    .HasConstraintName("fk_Carrito");
-
-                entity.HasOne(d => d.IdClienteNavigation)
-                    .WithMany(p => p.Ordens)
-                    .HasForeignKey(d => d.IdCliente)
-                    .HasConstraintName("fk_Cliente2");
-
-                entity.HasOne(d => d.IdMetodoPagoNavigation)
-                    .WithMany(p => p.Ordens)
-                    .HasForeignKey(d => d.IdMetodoPago)
-                    .HasConstraintName("fk_MetodoPago");
             });
 
             modelBuilder.Entity<Prendum>(entity =>
