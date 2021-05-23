@@ -1,6 +1,8 @@
 ﻿using E_Commerce_CuidadoConElPerro.Models;
 using E_Commerce_CuidadoConElPerro.Sesiones;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -20,8 +22,11 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             this.env = env;
         }
 
+        [Authorize]
         public IActionResult AgregarCarrito(int? id)
         {
+            HttpContext.Session.SetString("Nombre", HttpContext.User.Identity.Name);
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             if (id == null)
                 return NotFound();
             Prendum prenda = db.Prenda.Find(id);
@@ -30,6 +35,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             return View(prenda);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult AgregarCarrito(int id, int? cantidad)
         {
@@ -55,6 +61,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
                 {
                     ListaCarrito.Add(carrito);
                     SessionHelper.SetProductoAsJson(HttpContext.Session, "Carrito", ListaCarrito);
+                    TempData["Carrito"] = "Se ha agregado correctamente";
                     return RedirectToAction("verPrendas", "Cliente");
                 }
                 else
@@ -70,8 +77,10 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             return View();
         }
 
+        [Authorize]
         public IActionResult MostrarCarrito()
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             List<Carrito> ListaCarrito;
             if (SessionHelper.GetProductoFromJson<List<Carrito>>(HttpContext.Session, "Carrito") == null )
             {
@@ -84,6 +93,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             return View(ListaCarrito);
         }
 
+        [Authorize]
         public IActionResult ObtenerFoto(int id)
         {
             try
@@ -98,14 +108,15 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             }
         }
 
-
+        [Authorize]
         public IActionResult Eliminar(int? id)
         {
             List<Carrito> ListaCarrito;
             ListaCarrito = SessionHelper.GetProductoFromJson<List<Carrito>>(HttpContext.Session, "Carrito");
             var lista = ListaCarrito.Find(x => x.Prenda.IdPrenda == id);
             ListaCarrito.Remove(lista);
-            SessionHelper.SetProductoAsJson(HttpContext.Session, "Carrito", ListaCarrito);
+            SessionHelper.SetProductoAsJson(HttpContext.Session, "Carrito", ListaCarrito); 
+            TempData["Eliminado"] = "Producto eliminado";
             return RedirectToAction("verPrendas", "Cliente");
         }
 

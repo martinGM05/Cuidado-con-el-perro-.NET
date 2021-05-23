@@ -1,8 +1,9 @@
 ﻿
+
 @{
     ViewData["Title"] = "verPrendas";
     Layout = "~/Views/Shared/_LayoutTienda.cshtml";
-
+    ViewData["Name"] = @ViewBag.Nombre;
 
 }
 
@@ -10,8 +11,10 @@
 <link href="~/css/estiloVerPrendas.css" rel="stylesheet" />
 <div class="container-fluid">
     <div style="margin-top: 95px;">
+        <a class="btn btn-warning" style="color: black;" asp-action="Tienda"><i class="fas fa-undo-alt"></i> Regresar</a>
         <div class="text-center">
-
+            <span id="Carrito" class="d-none">@TempData["Carrito"]</span>
+            <span id="Eliminado" class="d-none">@TempData["Eliminado"]</span>
             <h1 class="page-header text-center">
                 Echale un vistazo a nuestra ropa
             </h1>
@@ -20,38 +23,49 @@
             <p class="text-center">
                 En este apartado podremos ver toda la <b>ropa</b> de la tienda.
             </p>
+            <form asp-action="verPrendas" method="post" enctype="multipart/form-data">
+                <div class="col-1 mb-3">
+                    <div class="btn-group">
 
-            <div class="col-1 mb-3">
-                <div class="btn-group">
-                    <a class="btn btn-warning" style="color: black;" asp-action="Tienda"><i class="fas fa-undo-alt"></i> Regresar</a>
+                        <label class="form-label ml-4 mt-1" for="departamento">Departamento</label>
+                        <select style="width: auto" for="departamento" class="custom-select ml-1" name="idDepartamento" asp-items="ViewBag.Departamentos" required>
+                            <option value="0" selected>Escoja un departamento</option>
+                        </select>
+                        <label class="form-label ml-4 mt-1" for="departamento">Género</label>
+                        <select style="width: auto" class="custom-select ml-1" name="genero" required>
+                            <option value="Todos" selected>Escoja un género</option>
+                            <option value="Femenino">Mujer</option>
+                            <option value="Masculino">Hombre</option>
+                        </select>
+                        <input type="submit" name="name" value="Filtrar" class="btn btn-outline-success ml-2" />
+                    </div>
                 </div>
-                   </div>
-
+            </form>
         </div>
-            <div class="row container">
-                <div class="card-deck">
-                    @foreach (Prendum item in ViewBag.Prenda)
-                     {
-                        <div class="card">
-                            <div class="box">
-                                <div class="slide-img">
-                                    <a class="fancybox" href="@Url.Action("ObtenerFotoPrenda", new { id = item.IdPrenda })" style="width: 250px; color: black; font-weight: bold;">
-                                        <img src="@Url.Action("ObtenerFotoPrenda", new { id = item.IdPrenda })" class="card-img-top" style="width: 250px" />
-                                    </a>
-                                </div>
-                                <div class="detail-box">
-                                    <div class="type">
-                                        <a>@item.NombrePrenda</a>
-                                        <span>@item.Descripcion</span>
-                                    </div>
-                                    <a class="price">$@item.Precio</a>
-                                </div>
-                                <a class="btn btn-outline-danger" asp-action="AgregarCarrito" asp-controller="Carrito" asp-route-id="@item.IdPrenda">Agregar a carrito</a>
+        <div class="row container" id="cardPrendas">
+            <div class="card-deck">
+                @foreach (Prendum item in ViewBag.Prenda)
+                {
+                    <div class="card" style="width: auto; height: auto; border: 2px solid; background-color: azure">
+                        <div class="box">
+                            <div class="slide-img ml-5">
+                                <a class="fancybox" href="@Url.Action("ObtenerFotoPrenda", new { id = item.IdPrenda })" style="width: 150px; height: 150px; color: black; font-weight: bold;">
+                                    <img src="@Url.Action("ObtenerFotoPrenda", new { id = item.IdPrenda })" class="card-img-top" style="width: 150px; height:150px;" />
+                                </a>
                             </div>
+                            <div class="detail-box">
+                                <div class="type">
+                                    <a>@item.NombrePrenda</a>
+                                    <span>@item.Descripcion</span>
+                                </div>
+                                <a class="price">$@item.Precio</a>
+                            </div>
+                            <a class="btn btn-outline-danger ml-5" asp-action="AgregarCarrito" asp-controller="Carrito" asp-route-id="@item.IdPrenda">Agregar a carrito</a>
                         </div>
-                     }
-                </div>
+                    </div>
+                }
             </div>
+        </div>
     </div>
 </div>
 
@@ -59,6 +73,34 @@
 
 @section Scripts
 {
+
+    <script>
+        $(document).ready(function () {
+            var message = $('#Carrito').text();
+            if (message !== '') {
+                toastr.success(message, "Agregado al carrito", {
+                    "closeButton": true,
+                    "progressBar": true,
+                    "positionClass": "toast-bottom-right",
+                    "preventDuplicates": true,
+                });
+            }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var message = $('#Eliminado').text();
+            if (message !== '') {
+                toastr.error(message, "Eliminado del carrito", {
+                    "closeButton": true,
+                    "progressBar": true,
+                    "positionClass": "toast-bottom-right",
+                    "preventDuplicates": true,
+                });
+            }
+        });
+    </script>
 
     <script src="~/fancybox/jquery.fancybox.js"></script>
 

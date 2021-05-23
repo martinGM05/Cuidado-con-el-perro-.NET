@@ -30,13 +30,19 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         [Authorize]
         public IActionResult Inicio()
         {
+            HttpContext.Session.SetString("Nombre", HttpContext.User.Identity.Name);
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
+            ViewBag.SumaPrendas = db.Prenda.Count();
+            ViewBag.CostoInventario = db.Prenda.Select(x => x.Precio).Sum();
+            ViewBag.Clientes = db.Clientes.Count();
+            ViewBag.Empleado = db.Empleados.Count();
             return View();
         }
 
         [Authorize]
         public IActionResult AgregarPrenda()
         {
-            
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             ViewBag.Proovedores = new SelectList(db.Proovedors, "IdProovedor", "NombreProovedor");
             ViewBag.Tallas = db.Tallas.ToList();
             ViewBag.Departamentos = new SelectList(db.Departamentos, "IdDepartamento", "NombreDepartamento");
@@ -63,6 +69,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         [Authorize]
         public IActionResult AgregarDepartamento()
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             return View();
         }
 
@@ -86,6 +93,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         [Authorize]
         public IActionResult AgregarProovedor()
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             return View();
         }
 
@@ -102,18 +110,21 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         [Authorize]
         public IActionResult VerDepartamento()
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             return View(db.Departamentos.ToList());
         }
 
         [Authorize]
         public IActionResult VerProovedor()
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             return View(db.Proovedors.ToList());
         }
 
         [Authorize]
         public IActionResult VerPrenda()
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             db.Tallas.ToList();
             db.Departamentos.ToList();
             db.Proovedors.ToList();
@@ -123,6 +134,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         [Authorize]
         public IActionResult ActualizarDepartamento(int ? id)
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             if (id == null)
             {
                 return NotFound();
@@ -137,6 +149,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         [HttpPost]
         public IActionResult ActualizarDepartamento(Departamento departamento)
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             db.Entry(departamento).State = EntityState.Modified;
             db.SaveChanges();
             TempData["Actualizar"] = departamento.NombreDepartamento + " fue actualizad@";
@@ -146,6 +159,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         [Authorize]
         public IActionResult ActualizarProovedor(int ? id)
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             if (id == null)
             {
                 return NotFound();
@@ -160,6 +174,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         [HttpPost]
         public IActionResult ActualizarProovedor(Proovedor proovedor)
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             db.Entry(proovedor).State = EntityState.Modified;
             db.SaveChanges();
             TempData["Actualizar"] = proovedor.NombreProovedor + " fue actualizad@";
@@ -169,6 +184,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         [Authorize]
         public IActionResult ActualizarPrenda(int? id)
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             if (id == null)
             {
                 return NotFound();
@@ -187,6 +203,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         [HttpPost]
         public IActionResult ActualizarPrenda(Prendum prenda, IFormFile foto)
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             if (ModelState.IsValid)
             {
                 if (foto == null)
@@ -214,6 +231,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         [Authorize]
         public IActionResult EliminarDepartamento(int? id)
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             if (id == null)
             {
                 return NotFound();
@@ -228,6 +246,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         [HttpPost]
         public IActionResult EliminarDepartamento(int id)
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             Departamento departamento = db.Departamentos.Find(id);
             db.Departamentos.Remove(departamento);
             db.SaveChanges();
@@ -238,6 +257,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         [Authorize]
         public IActionResult EliminarProovedor(int? id)
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             if (id == null)
             {
                 return NotFound();
@@ -252,6 +272,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         [HttpPost]
         public IActionResult EliminarProovedor(int id)
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             Proovedor proovedor = db.Proovedors.Find(id);
             db.Proovedors.Remove(proovedor);
             db.SaveChanges();
@@ -262,6 +283,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         [Authorize]
         public IActionResult EliminarPrenda(int? id)
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             Prendum prenda = db.Prenda.Find(id);
             db.Prenda.Remove(prenda);
             db.SaveChanges();
@@ -272,6 +294,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         [Authorize]
         public IActionResult AgregarEmpleado()
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             ViewBag.Rol = new SelectList(db.Rols, "IdRol", "Usuario");
             return View();
         }
@@ -280,6 +303,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         [HttpPost]
         public IActionResult AgregarEmpleado(Empleado empleado, IFormFile foto)
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             byte[] imagenEmpleado = null;
             using (MemoryStream ms = new MemoryStream())
             {
@@ -296,6 +320,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         [Authorize]
         public IActionResult VerEmpleado()
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             db.Rols.ToList();
             return View(db.Empleados.ToList());
         }
@@ -303,6 +328,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         [Authorize]
         public IActionResult ActualizarEmpleado(int? id)
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             if (id == null)
             {
                 return NotFound();
@@ -319,6 +345,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         [HttpPost]
         public IActionResult ActualizarEmpleado(Empleado empleado, IFormFile foto)
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             if (ModelState.IsValid)
             {
                 if (foto == null)
@@ -346,6 +373,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
         [Authorize]
         public IActionResult EliminarEmpleado(int? id)
         {
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             Empleado empleado = db.Empleados.Find(id);
             db.Empleados.Remove(empleado);
             db.SaveChanges();

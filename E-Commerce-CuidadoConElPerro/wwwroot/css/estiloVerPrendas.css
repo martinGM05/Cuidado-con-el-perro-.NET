@@ -7,16 +7,22 @@
 }
 
 .slide-img {
-    height: 250px;
+    height: 140px;
     position: relative;
 }
 
-    .slide-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        box-sizing: border-box;
-    }
+/*#cardPrendas{
+    overflow-y: scroll;
+    height: 500px;
+    width: 400px;
+}*/
+
+.slide-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-sizing: border-box;
+}
 
 .detail-box {
     width: 100%;

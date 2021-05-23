@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Tienda";
     Layout = "~/Views/Shared/_LayoutTienda.cshtml";
+    ViewData["Name"] = @ViewBag.Nombre;
 }
 <section>
     <div class="bannerPrincipal">
@@ -102,18 +103,18 @@
 <div class="container mt-5">
     <div class="row">
 
-        @foreach (Prendum item in ViewBag.Prendas)
+        @foreach (Prendum item in ViewBag.queryTop)
         {
             <div class="col-md-3  model-card">
-                <a href="#">
+                <a asp-controller="Carrito" asp-action="AgregarCarrito" asp-route-id="@item.IdPrenda">
                     <div class="bsblox-image-effect16">
                         <img class="img-fluid" src="@Url.Action("ObtenerFotoPrenda", new { id = item.IdPrenda })" />
 
                         <div class="bsblox-caption">
 
-                            <p><strong>Comprar</strong></p>
+                            <p style="color: black; font-weight: bold; font-size: 20px;">Agregar a carrito</p>
                         </div>
-                        <div class="bsblox-links"><a class="profile-link" href="#1"><i class="fa fa-search fa fa-search"></i></a></div>
+                        <div class="bsblox-links"><a class="profile-link" href="#1" style="font-size: 20px;"><i class="fas fa-cart-plus"></i></a></div>
                         <div class="text-center model-card-title">@item.NombrePrenda</div>
                     </div>
                 </a>
