@@ -48,15 +48,14 @@
                                 <p class="login-card-description">Ingresa con tu cuenta</p>
                                 <div class="form-group">
                                     <label for="email" class="sr-only">Usuario</label>
-                                    <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Nombre de usuario">
+                                    <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Nombre de usuario" required>
                                 </div>
                                 <div class="form-group mb-4">
                                     <label for="password" class="sr-only">Contraseña</label>
-                                    <input type="password" name="password" id="password" class="form-control" placeholder="***********">
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="***********" required>
                                 </div>
                                 <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Entrar">
                                 <p class="login-card-footer-text">¿No tiene una cuenta? <a asp-action="CrearCliente" class="text-reset">Registrese aquí</a></p>
-
                             </div>
                         </div>
                     </div>
