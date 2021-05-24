@@ -15,6 +15,7 @@
         <div class="text-center">
             <span id="Carrito" class="d-none">@TempData["Carrito"]</span>
             <span id="Eliminado" class="d-none">@TempData["Eliminado"]</span>
+            <span id="Pagado" class="d-none">@TempData["Pagado"]</span>
             <h1 class="page-header text-center">
                 Echale un vistazo a nuestra ropa
             </h1>
@@ -79,6 +80,20 @@
             var message = $('#Carrito').text();
             if (message !== '') {
                 toastr.success(message, "Agregado al carrito", {
+                    "closeButton": true,
+                    "progressBar": true,
+                    "positionClass": "toast-bottom-right",
+                    "preventDuplicates": true,
+                });
+            }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var message = $('#Pagado').text();
+            if (message !== '') {
+                toastr.success(message, "Pago cofirmado", {
                     "closeButton": true,
                     "progressBar": true,
                     "positionClass": "toast-bottom-right",

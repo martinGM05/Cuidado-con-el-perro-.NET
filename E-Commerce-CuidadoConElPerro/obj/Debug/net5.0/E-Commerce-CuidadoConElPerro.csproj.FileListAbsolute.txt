@@ -167,3 +167,11 @@ C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro
 C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Cliente\Carrito.cshtml.g.cs
 C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Carrito\AgregarCarrito.cshtml.g.cs
 C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Carrito\MostrarCarrito.cshtml.g.cs
+C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\bin\Debug\net5.0\Rotativa.AspNetCore.dll
+C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\E-Commerce-CuidadoConElPerro.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Martin Gonzalez\source\repos\ProyectoFinal\E-Commerce-CuidadoConElPerro\obj\Debug\net5.0\Razor\Views\Pdf\Bodega.cshtml.g.cs

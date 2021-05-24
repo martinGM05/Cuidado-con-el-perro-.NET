@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -77,6 +78,13 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             return View();
         }
 
+        public IActionResult EliminarCarrito()
+        {
+            HttpContext.Session.Remove("Carrito");
+            TempData["Pagado"] = "Carrito pagado";
+            return RedirectToAction("verPrendas", "Cliente");
+        }
+
         [Authorize]
         public IActionResult MostrarCarrito()
         {
@@ -90,6 +98,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             {
                 ListaCarrito = SessionHelper.GetProductoFromJson<List<Carrito>>(HttpContext.Session, "Carrito");
             }
+            ViewBag.MetodosDePago = new SelectList(db.MetodoPagos, "IdMetodoPago", "Nombre");
             return View(ListaCarrito);
         }
 

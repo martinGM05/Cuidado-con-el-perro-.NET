@@ -95,6 +95,9 @@ namespace E_Commerce_CuidadoConElPerro
                     name: "default",
                     pattern: "{controller=Inicio}/{action=Login}");
             });
+
+            Rotativa.AspNetCore.RotativaConfiguration.Setup(env.WebRootPath, "../Rotativa");
+
         }
     }
 }

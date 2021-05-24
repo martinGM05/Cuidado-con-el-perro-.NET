@@ -9,9 +9,19 @@
 <h1>MostrarCarrito</h1>
 
 <div class="container mt-5">
-    <p>
-        <a asp-controller="Cliente" asp-action="verPrendas" class="btn btn-lg btn-danger">Regresar</a>
-    </p>
+    <div class="btn-group">
+        <p>
+            <a asp-controller="Cliente" asp-action="verPrendas" class="btn btn-lg btn-danger"><i class="fas fa-arrow-left"></i> Regresar</a>
+        </p>
+        <div class="ml-5 btn-group">
+            <label  class="form-label mr-3">Método de pago</label>
+            <select class="custom-select" asp-items="@ViewBag.MetodosDePago"></select>
+        </div>
+        <p class="ml-3">
+            <a class="btn btn-warning" asp-action="EliminarCarrito">Pagar</a>
+        </p>
+    </div>
+
 
     <div class="align-items-sm-center">
         <table id="example" class="table table-striped table-bordered">
