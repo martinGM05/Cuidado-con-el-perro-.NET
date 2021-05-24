@@ -96,10 +96,8 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
 
         public IActionResult AutentificacionError()
         {
-            HttpContext.Session.SetString("Nombre", HttpContext.User.Identity.Name);
             if (User.Identity.IsAuthenticated)
             {
-                ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
                 return View();
             }
             else
