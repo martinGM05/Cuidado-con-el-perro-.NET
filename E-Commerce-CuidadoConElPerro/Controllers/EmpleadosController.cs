@@ -27,16 +27,24 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             this.env = env;
         }
 
-        [Authorize]
+
         public IActionResult Inicio()
         {
-            HttpContext.Session.SetString("Nombre", HttpContext.User.Identity.Name);
-            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
-            ViewBag.SumaPrendas = db.Prenda.Count();
-            ViewBag.CostoInventario = db.Prenda.Select(x => x.Precio).Sum();
-            ViewBag.Clientes = db.Clientes.Count();
-            ViewBag.Empleado = db.Empleados.Count();
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                HttpContext.Session.SetString("Nombre", HttpContext.User.Identity.Name);
+                ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
+                ViewBag.SumaPrendas = db.Prenda.Count();
+                ViewBag.CostoInventario = db.Prenda.Select(x => x.Precio).Sum();
+                ViewBag.Clientes = db.Clientes.Count();
+                ViewBag.Empleado = db.Empleados.Count();
+                return View();
+            }
+            else
+            {
+                return Redirect("/");
+            }
+
         }
 
         [Authorize]
@@ -291,7 +299,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             return RedirectToAction("VerPrenda");
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public IActionResult AgregarEmpleado()
         {
             ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
@@ -301,23 +309,16 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult AgregarEmpleado(Empleado empleado, IFormFile foto)
+        public IActionResult AgregarEmpleado(Empleado empleado)
         {
             ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
-            byte[] imagenEmpleado = null;
-            using (MemoryStream ms = new MemoryStream())
-            {
-                foto.CopyTo(ms);
-                imagenEmpleado = ms.ToArray();
-            }
-            empleado.Imagen = imagenEmpleado;
             db.Empleados.Add(empleado);
             db.SaveChanges();
             TempData["Message"] = empleado.NombreEmpleado + " fue registrad@";
             return RedirectToAction("Inicio");
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public IActionResult VerEmpleado()
         {
             ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
@@ -325,7 +326,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             return View(db.Empleados.ToList());
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public IActionResult ActualizarEmpleado(int? id)
         {
             ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
@@ -348,20 +349,6 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             if (ModelState.IsValid)
             {
-                if (foto == null)
-                {
-                    empleado.Imagen = SessionHelper.GetProductoFromJson<byte[]>(HttpContext.Session, "foto");
-                }
-                else
-                {
-                    byte[] imagenEmpleado = null;
-                    using (MemoryStream ms = new MemoryStream())
-                    {
-                        foto.CopyTo(ms);
-                        imagenEmpleado = ms.ToArray();
-                    }
-                    empleado.Imagen = imagenEmpleado;
-                }
                 db.Entry(empleado).State = EntityState.Modified;
                 db.SaveChanges();
                 TempData["Actualizar"] = empleado.NombreEmpleado + " fue actualizad@";
@@ -370,7 +357,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             return View(empleado);       
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public IActionResult EliminarEmpleado(int? id)
         {
             ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
@@ -388,21 +375,6 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             {
                 var prenda = db.Prenda.Find(id);
                 return File(prenda.Imagen, "image/jpeg");
-            }
-            catch (Exception)
-            {
-                var path = Path.Combine(env.WebRootPath, "img", "not-found.png");
-                return PhysicalFile(path, "image/png");
-            }
-        }
-
-        [Authorize]
-        public IActionResult ObtenerFotoEmpleado(int id)
-        {
-            try
-            {
-                var empleado = db.Empleados.Find(id);
-                return File(empleado.Imagen, "image/jpeg");
             }
             catch (Exception)
             {

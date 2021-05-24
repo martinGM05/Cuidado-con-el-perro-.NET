@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
+using System.Net;
 
 namespace E_Commerce_CuidadoConElPerro
 {
@@ -33,6 +35,29 @@ namespace E_Commerce_CuidadoConElPerro
                     {
                         option.LoginPath = new PathString("/Inicio/AutentificacionError");
                         option.AccessDeniedPath = new PathString("/Inicio/AutentificacionError");
+                        option.Events = new CookieAuthenticationEvents()
+                        {
+                            OnSigningIn = async context =>
+                            {
+                                var principal = context.Principal;
+                                if (principal.HasClaim(c => c.Type == ClaimTypes.NameIdentifier))
+                                {
+                                    if (principal.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value == "1")
+                                    {
+                                        var claimsIdentity = principal.Identity as ClaimsIdentity;
+                                        claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, "Admin"));
+                                    }
+                                }
+                            },
+                            OnSignedIn = async context =>
+                            {
+                                await Task.CompletedTask;
+                            },
+                            OnValidatePrincipal = async context =>
+                            {
+                                await Task.CompletedTask;
+                            }
+                        };
                     });
             services.AddDbContext<CuidadoConElPerroContext>(
                 options =>

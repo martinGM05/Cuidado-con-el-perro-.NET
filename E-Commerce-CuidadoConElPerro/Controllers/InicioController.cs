@@ -66,7 +66,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
                 {
                     new Claim(ClaimTypes.Name, user.NombreEmpleado),
                     new Claim(ClaimTypes.Email, user.Usuario),
-                    new Claim(ClaimTypes.Role, "")
+                    new Claim(ClaimTypes.NameIdentifier, user.IdEmpleado.ToString())
                 };
                 var autenticacion = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 await HttpContext.SignInAsync(
@@ -96,7 +96,17 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
 
         public IActionResult AutentificacionError()
         {
-            return View();
+            HttpContext.Session.SetString("Nombre", HttpContext.User.Identity.Name);
+            if (User.Identity.IsAuthenticated)
+            {
+                ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
+                return View();
+            }
+            else
+            {
+                return Redirect("/");
+            }
+
         }
 
         public async Task<IActionResult> Salir()
@@ -104,7 +114,6 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
             await HttpContext.SignOutAsync();
             return RedirectToAction("Login", "Inicio");
         }
-
 
     }
 }

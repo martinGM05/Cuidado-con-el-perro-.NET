@@ -21,7 +21,6 @@
                         <tr>
                             <th style="width:160px">Empleados</th>
                             <th style="width:160px">Usuario</th>
-                            <th style="width:160px">Imágen</th>
                             <th style="width:160px">Contraseña</th>
                             <th style="width:160px">Rol</th>
                             <th style="width:220px">Acciones</th>
@@ -33,11 +32,6 @@
                             <tr>
                                 <td>@item.NombreEmpleado</td>
                                 <td>@item.Usuario</td>
-                                <td>
-                                    <a class="fancybox" href="@Url.Action("ObtenerFotoEmpleado", new { id = item.IdEmpleado })">
-                                        <img src="@Url.Action("ObtenerFotoEmpleado", new { id = item.IdEmpleado })" width="48" />
-                                    </a>
-                                </td>
                                 <td>@item.Contrasenia</td>
                                 <td>@item.IdRolNavigation.Usuario</td>
                                 <td>

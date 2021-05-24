@@ -42,7 +42,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" asp-controller="Empleados"  asp-action="Inicio">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-dog"></i>
                 </div>
@@ -54,7 +54,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" asp-action="Inicio">
+                <a class="nav-link" asp-controller="Empleados" asp-action="Inicio">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Inicio</span>
                 </a>
@@ -78,8 +78,8 @@
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">¿Qué quieres hacer?</h6>
-                        <a class="collapse-item" asp-action="AgregarPrenda">Agregar</a>
-                        <a class="collapse-item" asp-action="VerPrenda">Actualizar / Eliminar</a>
+                        <a class="collapse-item" asp-controller="Empleados" asp-action="AgregarPrenda">Agregar</a>
+                        <a class="collapse-item" asp-controller="Empleados" asp-action="VerPrenda">Actualizar / Eliminar</a>
                     </div>
                 </div>
             </li>
@@ -94,8 +94,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">¿Qué quieres hacer?</h6>
-                        <a class="collapse-item" asp-action="AgregarProovedor">Agregar</a>
-                        <a class="collapse-item" asp-action="VerProovedor">Actualizar / Eliminar</a>
+                        <a class="collapse-item" asp-controller="Empleados" asp-action="AgregarProovedor">Agregar</a>
+                        <a class="collapse-item" asp-controller="Empleados" asp-action="VerProovedor">Actualizar / Eliminar</a>
                     </div>
                 </div>
             </li>
@@ -111,8 +111,8 @@
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">¿Qué quieres hacer?</h6>
-                        <a class="collapse-item" asp-action="AgregarDepartamento">Agregar</a>
-                        <a class="collapse-item" asp-action="VerDepartamento">Actualizar / Eliminar</a>
+                        <a class="collapse-item" asp-controller="Empleados" asp-action="AgregarDepartamento">Agregar</a>
+                        <a class="collapse-item" asp-controller="Empleados" asp-action="VerDepartamento">Actualizar / Eliminar</a>
                     </div>
                 </div>
             </li>
@@ -125,6 +125,7 @@
                 Administración
             </div>
 
+
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
@@ -135,8 +136,8 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">¿Qué deseas hacer?</h6>
-                        <a class="collapse-item" asp-action="AgregarEmpleado">Agregar</a>
-                        <a class="collapse-item" asp-action="VerEmpleado">Actualizar / Eliminar</a>
+                        <a class="collapse-item" asp-controller="Empleados" asp-action="AgregarEmpleado">Agregar</a>
+                        <a class="collapse-item" asp-controller="Empleados" asp-action="VerEmpleado">Actualizar / Eliminar</a>
                     </div>
                 </div>
             </li>
@@ -171,14 +172,14 @@
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">@ViewData["Name"]</span>
                                 <img class="img-profile rounded-circle"
-                                     src="img/undraw_profile.svg">
+                                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1200px-User_icon_2.svg.png">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                  aria-labelledby="userDropdown">
                                 <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
+                                    Cerrar Sesión
                                 </a>
                             </div>
                         </li>
@@ -199,7 +200,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Martín ~ Manuel ~ Iván.  Al @DateTime.Now.ToLongDateString() </span>
+                        <span>Copyright &copy; Martín ~ Manuel ~ Iván. @DateTime.Now.ToLongDateString() </span>
                     </div>
                 </div>
             </footer>
