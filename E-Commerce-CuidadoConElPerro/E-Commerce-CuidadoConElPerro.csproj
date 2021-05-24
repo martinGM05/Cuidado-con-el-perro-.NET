@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Rotativa\" />
     <Folder Include="wwwroot\assets\bootstrap\css\" />
     <Folder Include="wwwroot\assets\bootstrap\js\" />
     <Folder Include="wwwroot\assets\css\" />
