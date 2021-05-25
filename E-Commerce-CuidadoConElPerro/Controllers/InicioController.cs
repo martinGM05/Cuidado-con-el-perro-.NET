@@ -15,7 +15,7 @@ namespace E_Commerce_CuidadoConElPerro.Controllers
     public class InicioController : Controller
     {
         private readonly CuidadoConElPerroContext db;
-
+        
         public InicioController(CuidadoConElPerroContext db)
         {
             this.db = db;
